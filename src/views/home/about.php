@@ -4,7 +4,7 @@
     </p>
     <div class="container">
         <!-- first row -->
-        <div class="columns">
+        <div class="columns columnsAbout">
             <div class="column">
                 <article class="media notification is-info columnCard-info">
                     <figure class="media-left">
@@ -53,7 +53,7 @@
         </div>
 
         <!-- second row -->
-        <div class="columns">
+        <div class="columns columnsAbout">
             <div class="column">
                 <article class="media notification is-success columnCard-success">
                     <figure class="media-left">

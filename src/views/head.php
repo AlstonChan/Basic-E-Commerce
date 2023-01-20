@@ -10,8 +10,8 @@
 
     <link rel="icon" href="/basic-e-commerce/public/assets/favicon.ico">
 
-    <link rel="stylesheet" href="/basic-e-commerce/public/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/basic-e-commerce/lib/bulma/bulma.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> -->
 </head>
 <style>
     .hero {
@@ -28,6 +28,41 @@
         background-repeat: repeat-x;
         background-image: url(/basic-e-commerce/public/assets/wave.svg);
         background-color: #fff
+    }
+
+    /* secondary.php  */
+    @media screen and (max-width:1024px) {
+        .remain-navbar {
+            align-items: stretch !important;
+            display: flex !important;
+            min-height: 3.25rem !important;
+        }
+
+        .remain-navMenu {
+            align-items: stretch !important;
+            display: flex !important;
+            flex-grow: 1 !important;
+            flex-shrink: 0 !important;
+            background-color: inherit !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+
+        .remain-navStart {
+            display: flex !important;
+            align-items: stretch !important;
+            justify-content: flex-start !important;
+        }
+
+        .remain-navItem {
+            color: #fff !important;
+            align-items: center !important;
+            display: flex !important;
+        }
+
+        .remain-navItem:hover {
+            background-color: #00b89c !important;
+        }
     }
 
     .homeCard:hover {
@@ -71,5 +106,12 @@
 
     .sml-tag>div:last-child {
         margin-bottom: 1.5rem !important;
+    }
+
+    /* about.php */
+    @media screen and (max-width:900px) {
+        .columnsAbout {
+            display: block !important;
+        }
     }
 </style>
