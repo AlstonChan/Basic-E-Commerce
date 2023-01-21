@@ -1,5 +1,10 @@
 <?php
-$navItem = [["title" => "Home"], ["title" => "About Us"], ["title" => "All Products"]];
+$homepageLink = "/basic-e-commerce/src/";
+$navItem = [
+    ["title" => "Home", "link" => $homepageLink],
+    ["title" => "About Us", "link" => $homepageLink . "about.php"],
+    ["title" => "All Products", "link" => $homepageLink . "all-product.php"]
+];
 
 $file = $_SERVER['DOCUMENT_ROOT'] . "/basic-e-commerce/public/assets/products.json";
 $data = json_decode(file_get_contents($file), true);
@@ -17,13 +22,13 @@ $arrangedCategory = array_values(array_unique($rawCategory));
     <div class="is-flex mx-3 navbar-break-show" x-data="{open: false}">
         <!-- navbar brand show only on small screen breakpoint -->
         <div class="navbar-brand my-0 navbar-break-show">
-            <a href="/basic-e-commerce/src/">
+            <a href="<?php echo $homepageLink; ?>">
                 <img src="/basic-e-commerce/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
             </a>
         </div>
 
         <!-- dropdown for small screen breakpoint -->
-        <div :class="open ? 'is-active' : ''" class="ml-auto dropdown is-right">
+        <div :class="open ? 'is-active' : ''" class="ml-auto dropdown is-right defaultCard">
             <!-- Hamburger -->
             <a x-on:click="open = !open" role="button" class="navbar-burger dropdown-trigger" aria-controls="dropdown-menu" aria-haspopup="true" aria-label="menu" aria-expanded="false" data-target="topNavBar">
                 <span aria-hidden="true"></span>
@@ -34,7 +39,7 @@ $arrangedCategory = array_values(array_unique($rawCategory));
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
                     <?php foreach ($navItem as $value) : ?>
-                        <a class="dropdown-item">
+                        <a href="<?php echo $value["link"]; ?>" class="dropdown-item <?php if ($page === $value["title"]) echo "is-active" ?>">
                             <?php echo $value["title"]; ?>
                         </a>
                     <?php endforeach; ?>
@@ -55,20 +60,16 @@ $arrangedCategory = array_values(array_unique($rawCategory));
     <div id="topNavBar" class="navbar-menu">
         <!-- left  -->
         <div class="navbar-start">
-            <a class="navbar-item">
-                Home
-            </a>
-            <a class="navbar-item">
-                About Us
-            </a>
-            <a class="navbar-item">
-                All Products
-            </a>
+            <?php foreach ($navItem as $value) : ?>
+                <a href="<?php echo $value["link"]; ?>" class="navbar-item <?php if ($page === $value["title"]) echo "is-active" ?>">
+                    <?php echo $value["title"]; ?>
+                </a>
+            <?php endforeach; ?>
         </div>
 
         <!-- middle brand  -->
         <div class="navbar-brand mx-auto my-0">
-            <a href="/basic-e-commerce/src/">
+            <a href="<?php echo $homepageLink; ?>">
                 <img src="/basic-e-commerce/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
             </a>
         </div>

@@ -92,9 +92,15 @@
   margin-bottom: 1.5rem !important;
 }
 
-/* about.php */
+/* aboutus.php */
 @media screen and (max-width: 900px) {
   .columnsAbout {
     display: block !important;
   }
+}
+
+/* testimonials.php */
+.wide-widescreen {
+  max-width: 2000px;
+  margin: 0 auto !important;
 }
