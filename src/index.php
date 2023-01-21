@@ -8,3 +8,5 @@
     <?php require "./views/home/about.php" ?>
     <?php require "./views/footer.php" ?>
 </body>
+
+</html>
