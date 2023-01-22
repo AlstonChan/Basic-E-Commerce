@@ -2,8 +2,8 @@
 $homepageLink = "/basic-e-commerce/src/";
 $navItem = [
     ["title" => "Home", "link" => $homepageLink],
-    ["title" => "About Us", "link" => $homepageLink . "about.php"],
-    ["title" => "All Products", "link" => $homepageLink . "all-product.php"]
+    ["title" => "About Us", "link" => $homepageLink . "about_us.php"],
+    ["title" => "All Products", "link" => $homepageLink . "all_product.php"]
 ];
 
 $file = $_SERVER['DOCUMENT_ROOT'] . "/basic-e-commerce/public/assets/products.json";
