@@ -10,7 +10,7 @@
             <article class="media">
                 <div class="media-left">
                     <figure class="image is-32x32 mb-4">
-                        <img src="/basic-e-commerce/public/assets/icon/cpu.svg" alt="cpu" width="32" height="32">
+                        <img src="/assets/icon/cpu.svg" alt="cpu" width="32" height="32">
                     </figure>
                 </div>
                 <div class="content pt-1">

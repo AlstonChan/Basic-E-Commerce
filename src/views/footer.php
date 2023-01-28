@@ -1,6 +1,6 @@
 <?php
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/basic-e-commerce/public/assets/social-media/social_media.json";
+$file = $_SERVER['DOCUMENT_ROOT'] . "/assets/social-media/social_media.json";
 $rawData = json_decode(file_get_contents($file), true);
 
 $data = $rawData["social-media"];

@@ -1,12 +1,12 @@
 <?php
-$homepageLink = "/basic-e-commerce/src/";
+$homepageLink = "/";
 $navItem = [
     ["title" => "Home", "link" => $homepageLink],
-    ["title" => "About Us", "link" => $homepageLink . "about_us.php"],
-    ["title" => "All Products", "link" => $homepageLink . "all_product.php"]
+    ["title" => "About Us", "link" => $homepageLink . "about_us"],
+    ["title" => "All Products", "link" => $homepageLink . "all_product"]
 ];
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/basic-e-commerce/public/assets/products.json";
+$file = $_SERVER['DOCUMENT_ROOT'] . "/assets/products.json";
 $data = json_decode(file_get_contents($file), true);
 
 $rawCategory = [];
@@ -23,7 +23,7 @@ $arrangedCategory = array_values(array_unique($rawCategory));
         <!-- navbar brand show only on small screen breakpoint -->
         <div class="navbar-brand my-0 navbar-break-show">
             <a href="<?php echo $homepageLink; ?>">
-                <img src="/basic-e-commerce/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
+                <img src="/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
             </a>
         </div>
 
@@ -70,7 +70,7 @@ $arrangedCategory = array_values(array_unique($rawCategory));
         <!-- middle brand  -->
         <div class="navbar-brand mx-auto my-0">
             <a href="<?php echo $homepageLink; ?>">
-                <img src="/basic-e-commerce/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
+                <img src="/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
             </a>
         </div>
 

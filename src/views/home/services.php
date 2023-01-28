@@ -1,11 +1,11 @@
 <?php
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/basic-e-commerce/public/assets/payment-icon/payment_card.json";
+$file = $_SERVER['DOCUMENT_ROOT'] . "/assets/payment-icon/payment_card.json";
 $paymentRawData = json_decode(file_get_contents($file), true);
 
 $paymentData = $paymentRawData["payment-methods"];
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/basic-e-commerce/public/assets/delivery-services/delivery.json";
+$file = $_SERVER['DOCUMENT_ROOT'] . "/assets/delivery-services/delivery.json";
 $deliveryRawData = json_decode(file_get_contents($file), true);
 
 $deliveryData = $deliveryRawData["delivery"];

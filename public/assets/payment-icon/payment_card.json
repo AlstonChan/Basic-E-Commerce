@@ -2,51 +2,51 @@
     "payment-methods": [
         {
             "name": "Visa",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/Visa-card-light.png"
+            "thumbnails": "/assets/payment-icon/Visa-card-light.png"
         },
         {
             "name": "MasterCard",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/MasterCard-light.png"
+            "thumbnails": "/assets/payment-icon/MasterCard-light.png"
         },
         {
             "name": "ALiPay",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/ALiPay-card-light.png"
+            "thumbnails": "/assets/payment-icon/ALiPay-card-light.png"
         },
         {
             "name": "Amazon",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/Amazon-card-light.png"
+            "thumbnails": "/assets/payment-icon/Amazon-card-light.png"
         },
         {
             "name": "AmericanExpress",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/AmericanExpress-light.png"
+            "thumbnails": "/assets/payment-icon/AmericanExpress-light.png"
         },
         {
             "name": "Apple",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/Apple-card-light.png"
+            "thumbnails": "/assets/payment-icon/Apple-card-light.png"
         },
         {
             "name": "Ebay",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/Ebay-card-light.png"
+            "thumbnails": "/assets/payment-icon/Ebay-card-light.png"
         },
         {
             "name": "GiroPay",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/GiroPay-card-light.png"
+            "thumbnails": "/assets/payment-icon/GiroPay-card-light.png"
         },
         {
             "name": "GoogleWallet",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/GoogleWallet-card-light.png"
+            "thumbnails": "/assets/payment-icon/GoogleWallet-card-light.png"
         },
         {
             "name": "Paypal",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/Paypal-card-light.png"
+            "thumbnails": "/assets/payment-icon/Paypal-card-light.png"
         },
         {
             "name": "Shopify",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/Shopify-card-light.png"
+            "thumbnails": "/assets/payment-icon/Shopify-card-light.png"
         },
         {
             "name": "Stripe",
-            "thumbnails": "/basic-e-commerce/public/assets/payment-icon/Stripe-card-light.png"
+            "thumbnails": "/assets/payment-icon/Stripe-card-light.png"
         }
     ]
 }

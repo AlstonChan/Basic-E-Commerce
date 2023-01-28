@@ -1,9 +1,9 @@
 <?php $page = "All Products" ?>
-<?php require "./views/head.php" ?>
+<?php require __DIR__ . "/../views/head.php" ?>
 
 <body>
-    <?php require "./views/nav/primary.php" ?>
-    <?php require "./views/nav/secondary.php" ?>
+    <?php require __DIR__ . "/../views/nav/primary.php" ?>
+    <?php require __DIR__ . "/../views/nav/secondary.php" ?>
 
     <?php
 
@@ -21,14 +21,14 @@
         <?php
 
         for ($index = 0; $index < count($arrangedCategory); $index++)
-            include "./views/all_products/product_section.php";
+            include __DIR__ . "/../views/all_products/product_section.php";
 
         ?>
 
 
     </article>
-    <?php require "./views/home/services.php" ?>
-    <?php require "./views/footer.php" ?>
+    <?php require __DIR__ . "/../views/home/services.php" ?>
+    <?php require __DIR__ . "/../views/footer.php" ?>
 </body>
 
 </html>

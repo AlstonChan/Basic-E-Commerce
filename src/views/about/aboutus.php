@@ -8,7 +8,7 @@
             <div class="column">
                 <article class="media notification is-info columnCard-info">
                     <figure class="media-left">
-                        <img class="sml-icon" src="/basic-e-commerce/public/assets/icon/delivery_truck.svg" alt="Delivery truck">
+                        <img class="sml-icon" src="/assets/icon/delivery_truck.svg" alt="Delivery truck">
                     </figure>
                     <div class="media-content">
                         <div class="content">
@@ -23,7 +23,7 @@
             <div class="column">
                 <article class="media notification is-primary columnCard-primary">
                     <figure class="media-left">
-                        <img class="sml-icon" src="/basic-e-commerce/public/assets/icon/bank.svg" alt="Bank">
+                        <img class="sml-icon" src="/assets/icon/bank.svg" alt="Bank">
                     </figure>
                     <div class="media-content">
                         <div class="content">
@@ -38,7 +38,7 @@
             <div class="column">
                 <article class="media notification is-warning columnCard-warning">
                     <figure class="media-left">
-                        <img class="sml-icon" src="/basic-e-commerce/public/assets/icon/bag.svg" alt="Bag">
+                        <img class="sml-icon" src="/assets/icon/bag.svg" alt="Bag">
                     </figure>
                     <div class="media-content">
                         <div class="content">
@@ -57,7 +57,7 @@
             <div class="column">
                 <article class="media notification is-success columnCard-success">
                     <figure class="media-left">
-                        <img class="sml-icon" src="/basic-e-commerce/public/assets/icon/refund.svg" alt="Refund">
+                        <img class="sml-icon" src="/assets/icon/refund.svg" alt="Refund">
                     </figure>
                     <div class="media-content">
                         <div class="content">
@@ -72,7 +72,7 @@
             <div class="column">
                 <article class="media notification is-link columnCard-link">
                     <figure class="media-left">
-                        <img class="sml-icon" src="/basic-e-commerce/public/assets/icon/check.svg" alt="check mark">
+                        <img class="sml-icon" src="/assets/icon/check.svg" alt="check mark">
                     </figure>
                     <div class="media-content">
                         <div class="content">
@@ -87,7 +87,7 @@
             <div class="column">
                 <article class="media notification is-info columnCard-info">
                     <figure class="media-left">
-                        <img class="sml-icon" src="/basic-e-commerce/public/assets/icon/conversation.svg" alt="conversation bubble">
+                        <img class="sml-icon" src="/assets/icon/conversation.svg" alt="conversation bubble">
                     </figure>
                     <div class="media-content">
                         <div class="content">
