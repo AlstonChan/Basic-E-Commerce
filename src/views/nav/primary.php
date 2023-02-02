@@ -6,16 +6,8 @@ $navItem = [
     ["title" => "All Products", "link" => $homepageLink . "all_product"]
 ];
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/assets/products.json";
-$data = json_decode(file_get_contents($file), true);
+require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.php";
 
-$rawCategory = [];
-
-foreach ($data['products'] as $value) {
-    $rawCategory[] = $value['category'];
-}
-
-$arrangedCategory = array_values(array_unique($rawCategory));
 ?>
 
 <nav class="container navbar mt-3 mb-3" role="navigation" aria-label="main navigation">
@@ -45,7 +37,7 @@ $arrangedCategory = array_values(array_unique($rawCategory));
                     <?php endforeach; ?>
                     <hr class="dropdown-divider">
 
-                    <?php foreach ($arrangedCategory as $value) : ?>
+                    <?php foreach ($arrangedProductsCategory as $value) : ?>
                         <a class="dropdown-item">
                             <?php echo $value; ?>
                         </a>

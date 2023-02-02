@@ -6,6 +6,8 @@ namespace Src;
 
 class Router
 {
+    private static ?Router $instance = null;
+
     private const METHOD_GET = "GET";
     private const METHOD_POST = "POST";
     private const METHOD_PUT = "PUT";
@@ -13,6 +15,19 @@ class Router
 
     private array $routes;
     private $pageError;
+
+    private function __construct()
+    {
+    }
+
+    public static function registerRouter(): self
+    {
+        if (self::$instance === null) {
+            self::$instance = new Router();
+        }
+
+        return self::$instance;
+    }
 
     public function get(string $path, callable $callback): self
     {

@@ -1,7 +1,7 @@
 <?php
 $topProducts = [];
 
-foreach ($data['products'] as $key => $value) {
+foreach ($productsData['products'] as $key => $value) {
     if ($value['rating'] > 4.5) {
         $topProducts[] = $value;
     }

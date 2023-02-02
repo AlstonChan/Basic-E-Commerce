@@ -1,14 +1,9 @@
 <?php $page = "All Products" ?>
-<?php require __DIR__ . "/../views/head.php" ?>
+<?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php" ?>
 
 <body>
-    <?php require __DIR__ . "/../views/nav/primary.php" ?>
-    <?php require __DIR__ . "/../views/nav/secondary.php" ?>
-
-    <?php
-
-    $arrangedCategory
-    ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/primary.php" ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/secondary.php" ?>
 
     <article class="section has-text-centered wide-widescreen">
         <p class="title is-2 has-text-weight-bold">
@@ -20,15 +15,14 @@
 
         <?php
 
-        for ($index = 0; $index < count($arrangedCategory); $index++)
-            include __DIR__ . "/../views/all_products/product_section.php";
+        for ($index = 0; $index < count($arrangedProductsCategory); $index++)
+            include $_SERVER['DOCUMENT_ROOT'] . "/../src/views/all_products/product_section.php";
 
         ?>
 
-
     </article>
-    <?php require __DIR__ . "/../views/home/services.php" ?>
-    <?php require __DIR__ . "/../views/footer.php" ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/home/services.php" ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/footer.php" ?>
 </body>
 
 </html>

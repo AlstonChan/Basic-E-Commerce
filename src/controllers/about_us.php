@@ -1,13 +1,13 @@
 <?php $page = "About Us" ?>
-<?php require  __DIR__ . "/../views/head.php" ?>
+<?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php" ?>
 
 <body>
-    <?php require  __DIR__ . "/../views/nav/primary.php" ?>
-    <?php require  __DIR__ . "/../views/nav/secondary.php" ?>
-    <?php require  __DIR__ . "/../views/about/aboutus.php" ?>
-    <?php require  __DIR__ . "/../views/about/testimonials.php" ?>
-    <?php require  __DIR__ . "/../views/home/services.php" ?>
-    <?php require  __DIR__ . "/../views/footer.php" ?>
+    <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/primary.php" ?>
+    <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/secondary.php" ?>
+    <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/about/aboutus.php" ?>
+    <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/about/testimonials.php" ?>
+    <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/home/services.php" ?>
+    <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/footer.php" ?>
 </body>
 
 </html>
