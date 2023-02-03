@@ -1,4 +1,10 @@
 <?php
+echo "<pre>";
+print_r($_SERVER);
+echo "</pre>";
+?>
+
+<?php
 
 if (!isset($msg))
     $msg = "404 not found";

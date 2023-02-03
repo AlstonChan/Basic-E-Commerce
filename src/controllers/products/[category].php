@@ -1,8 +1,7 @@
 <?php
 
-$currentCatogory = explode("/", $value['url'])[1];
+$currentCatogory = explode("/", $params['url'])[1];
 $page = $currentCatogory;
-$singleProduct = true;
 
 ?>
 <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php" ?>

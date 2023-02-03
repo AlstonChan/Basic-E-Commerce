@@ -23,16 +23,20 @@ $router->get('/all_product', function () {
     require_once  $GLOBALS['path'] . 'all_product.php';
 });
 
-$router->get('/products', function () {
-    $host  = $_SERVER['HTTP_HOST'];
-    header("Location: http://$host/all_product", true, 301);
-    exit;
+$router->get('/products', function ($params) {
+    if (isset($params['id'])) {
+        require $GLOBALS['path'] . "products/(id).php";
+    } else {
+        $host  = $_SERVER['HTTP_HOST'];
+        header("Location: http://$host/all_product", true, 301);
+        exit;
+    }
 });
 
 require_once  $path . "fetch/fetch_products.php";
 foreach ($arrangedProductsCategory as $value) {
-    $router->get("/products/{$value}", function ($value) {
-        require $GLOBALS['path'] . "products/[slug].php";
+    $router->get("/products/{$value}", function ($params) {
+        require $GLOBALS['path'] . "products/[category].php";
     });
 }
 

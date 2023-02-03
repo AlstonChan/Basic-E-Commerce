@@ -13,8 +13,11 @@
             <?php echo $topProducts[$order]["category"]; ?>
         </span>
         <div class="buttons is-justify-content-center mt-3">
-            <button class="button has-text-weight-bold is-primary">BUY NOW</button>
-            <button class="button has-text-weight-bold is-link">Info</button>
+            <button class="button has-text-weight-bold is-primary">
+                <a href="/products?id=<?php echo $topProducts[$order]["id"]; ?>" style="text-decoration:none">
+                    BUY NOW
+                </a>
+            </button>
         </div>
     </div>
 </article>
