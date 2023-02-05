@@ -17,23 +17,23 @@ foreach ($productsData['products'] as $product) {
     <?php require   $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/secondary.php" ?>
     <article class="section">
 
-        <div class="media container">
+        <div class="media container media-mobile-breakpoint">
 
-            <figure class="media-left is-flex-shrink-1">
+            <figure class="media-left is-flex-shrink-1 mx-auto">
                 <p class="image">
                     <img style="height: 100%; object-fit: cover;" src="<?php echo $currentProduct['thumbnail']; ?>">
                 </p>
             </figure>
-            <div class="media-content is-flex-shrink-2">
+            <div class="media-content is-flex-shrink-2" style="width:100%">
                 <div class="content has-background-light py-2 px-5">
-                    <p class="title is-size-1 mb-1">
+                    <p class="title is-size-1-desktop is-size-3-tablet is-size-4-mobile mb-1">
                         <?php echo $currentProduct["title"]; ?>
                     </p>
                     <hr class="m-1" style="background-color: #000;height: 3px;">
-                    <p class="mb-2 subtitle is-size-3">
+                    <p class="mb-2 subtitle is-size-3-tablet is-size-4-tablet is-size-5-mobile">
                         <?php echo $currentProduct["brand"]; ?>
                     </p>
-                    <p class="mb-3 is-size-5"><?php echo $currentProduct["description"]; ?></p>
+                    <p class="mb-3 is-size-5-desktop is-size-6-mobile"><?php echo $currentProduct["description"]; ?></p>
                     <p class="subtitle is-size-6 has-text-weight-bold">
                         USD <?php echo $currentProduct["price"]; ?> |
                         <span style="opacity:0.6">
@@ -41,9 +41,23 @@ foreach ($productsData['products'] as $product) {
                         </span>
                     </p>
 
-                    <form class="buttons mb-5">
-                        <button class="button has-text-weight-bold is-primary m-0 mr-2">Add to Cart</button>
-                        <input class="input" type="number" min="0" max="<?php echo $currentProduct["stock"]; ?>" style="width:auto">
+                    <form class="buttons mb-5" x-data="{
+                        cartNum: 1,
+                        validateNum(e) {
+                            let val = e.target.value;
+                            if (! e.target.value.match(/^\d+$/)) {val = e.target.value.replace(/[a-z]/gi, '');}
+
+                            if (val <= <?php echo $currentProduct["stock"]; ?>) {
+                                e.target.value = val;
+                            } else {
+                                e.target.value = <?php echo $currentProduct["stock"]; ?>;
+                                val = e.target.value;
+                            }
+                            cartNum = val;
+                        }
+                    }">
+                        <button type="submit" class="button has-text-weight-bold is-primary m-0 mr-2">Add to Cart</button>
+                        <input x-on:change.debounce="(e) => validateNum(e)" class="input" type="text" min="0" max="<?php echo $currentProduct["stock"]; ?>" value="1" style="width:auto">
                     </form>
                 </div>
                 <nav class="level is-mobile">

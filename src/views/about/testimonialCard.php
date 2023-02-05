@@ -1,5 +1,5 @@
 <article class="tile is-child notification is-primary">
-    <div class="media">
+    <div class="media media-mobile-small-breakpoint">
         <figure class="media-left">
             <p class="image is-64x64">
                 <img src="<?php echo $value["avatar"] ?>">

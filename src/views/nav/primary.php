@@ -10,7 +10,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
 
 ?>
 
-<nav class="container navbar mt-3 mb-3" role="navigation" aria-label="main navigation">
+<nav class="container navbar mt-3 mb-3" role="navigation" aria-label="main navigation" x-data="{cart: false}">
     <div class="is-flex mx-3 navbar-break-show" x-data="{open: false}">
         <!-- navbar brand show only on small screen breakpoint -->
         <div class="navbar-brand my-0 navbar-break-show">
@@ -19,14 +19,33 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
             </a>
         </div>
 
+        <!-- cart dropdown  -->
+        <div :class="cart ? 'is-active' : ''" class="ml-auto dropdown is-right is-align-self-center">
+            <div class="dropdown-trigger">
+                <button x-on:click="cart = !cart" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
+                    <figure class="image">
+                        <img src="/assets/icon/cart.svg">
+                    </figure>
+                </button>
+            </div>
+            <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
+                <div class="dropdown-content">
+                    <div class="dropdown-item has-text-centered">
+                        Cart Empty
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- dropdown for small screen breakpoint -->
-        <div :class="open ? 'is-active' : ''" class="ml-auto dropdown is-right defaultCard">
+        <div :class="open ? 'is-active' : ''" class="ml dropdown is-right defaultCard">
+
             <!-- Hamburger -->
             <a x-on:click="open = !open" role="button" class="navbar-burger dropdown-trigger" aria-controls="dropdown-menu" aria-haspopup="true" aria-label="menu" aria-expanded="false" data-target="topNavBar">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
             </a>
+
             <!-- dropdown content  -->
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
                 <div class="dropdown-content">
@@ -38,8 +57,8 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
                     <hr class="dropdown-divider">
 
                     <?php foreach ($arrangedProductsCategory as $value) : ?>
-                        <a class="dropdown-item">
-                            <?php echo $value; ?>
+                        <a href="<?php echo "/products/{$value}"; ?>" class="dropdown-item <?php if ($page === $value) echo "is-active" ?>">
+                            <?php echo ucfirst($value); ?>
                         </a>
                     <?php endforeach; ?>
                 </div>
@@ -70,6 +89,22 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+                    <div :class="cart ? 'is-active' : ''" class="dropdown">
+                        <div class="dropdown-trigger">
+                            <button x-on:click="cart = !cart" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
+                                <figure class="image">
+                                    <img src="/assets/icon/cart.svg">
+                                </figure>
+                            </button>
+                        </div>
+                        <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
+                            <div class="dropdown-content">
+                                <div class="dropdown-item has-text-centered">
+                                    Cart Empty
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <a class="button is-primary">
                         <strong>Sign up</strong>
                     </a>
