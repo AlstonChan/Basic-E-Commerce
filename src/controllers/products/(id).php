@@ -7,7 +7,9 @@ foreach ($productsData['products'] as $product) {
         $page = $product['title'];
         $currentProduct = $product;
     }
-}
+};
+
+$imgSize = getimagesize($currentProduct['thumbnail']);
 
 ?>
 <?php require  $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php" ?>
@@ -19,17 +21,15 @@ foreach ($productsData['products'] as $product) {
 
         <div class="media container media-mobile-breakpoint">
 
-            <figure class="media-left is-flex-shrink-1 mx-auto">
-                <p class="image">
-                    <img style="height: 100%; object-fit: cover;" src="<?php echo $currentProduct['thumbnail']; ?>">
-                </p>
+            <figure class="media-left is-flex-shrink-1 mx-auto mb-3" style="max-width:350px">
+                <img style="height: 100%; object-fit: cover;" src="<?php echo $currentProduct['thumbnail']; ?>" width="<?php echo $imgSize[0] ?>px" height="<?php echo $imgSize[1] ?>px">
             </figure>
-            <div class="media-content is-flex-shrink-2" style="width:100%">
-                <div class="content has-background-light py-2 px-5">
+            <div class="media-content is-flex-shrink-2" style="width:100%;">
+                <div class="content has-background-light py-2 px-5" style="border-radius:8px">
                     <p class="title is-size-1-desktop is-size-3-tablet is-size-4-mobile mb-1">
                         <?php echo $currentProduct["title"]; ?>
                     </p>
-                    <hr class="m-1" style="background-color: #000;height: 3px;">
+                    <hr class="m-1 mt-3" style="background-color: #000;height: 3px;">
                     <p class="mb-2 subtitle is-size-3-tablet is-size-4-tablet is-size-5-mobile">
                         <?php echo $currentProduct["brand"]; ?>
                     </p>
