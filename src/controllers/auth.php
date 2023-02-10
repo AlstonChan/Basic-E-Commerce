@@ -9,14 +9,38 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
 <body>
     <section class="section is-large">
         <svg class="background--custom" id="demo" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="path-auth" fill="#72fd54" fill-opacity="0.7" d="M-100 -100L200 -100L200 50L-100 50Z" style="animation: path0 9.803921568627452s linear infinite alternate;" />
-            <path class="path-auth" fill="#8fa2f0" fill-opacity="0.5" d="M-100 -100L200 -100L200 40L-100 40Z" style="animation: path1 3.7037037037037037s linear infinite alternate;" />
-            <path class="path-auth" fill="#155697" fill-opacity="0.8" d="M-100 -100L200 -100L200 50L-100 50Z" style="animation: path2 23.80952380952381s linear infinite alternate;" />
+            <path class="path-auth" fill="#FFFF00" fill-opacity="0.7" d="M-100 -100L200 -100L200 50L-100 50Z" style="animation: path0 5s linear infinite alternate;" />
+            <path class="path-auth" fill="#00FFFF" fill-opacity="0.7" d="M-100 -100L200 -100L200 50L-100 50Z" style="animation: path1 12.5s linear infinite alternate;" />
+            <path class="path-auth" fill="#FF00FF" fill-opacity="0.2" d="M-100 -100L200 -100L200 20L-100 20Z" style="animation: path2 30s linear infinite alternate;" />
         </svg>
-        <h1 class="title">Large section</h1>
-        <h2 class="subtitle">
-            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading.
-        </h2>
+        <div class="container">
+            <div class="container" style="width:fit-content">
+                <div class="custom-box-auth columnCard-info p-3">
+                    <figure class="mx-auto my-3" style="width:fit-content">
+                        <a href="/">
+                            <img src="/assets/logo.svg" width="224" height="56" style="vertical-align:middle">
+                        </a>
+                    </figure>
+
+                    <h1 class="title has-text-centered has-text-weight-bold">
+                        <?php echo $params['type'] === 'login' ? 'Welcome back !' : 'Create a new account' ?>
+                    </h1>
+                    <h2 class="subtitle has-text-centered">
+                        <?php echo $params['type'] === 'login' ? 'User log In' : 'Sign up new account' ?>
+                    </h2>
+                    <?php
+
+                    if ($params['type'] === 'login') {
+                        require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/login.php";
+                    } else {
+                        require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/signup.php";
+                    }
+
+                    ?>
+
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 
