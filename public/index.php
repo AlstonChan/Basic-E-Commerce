@@ -33,6 +33,21 @@ $router->get('/products', function ($params) {
     }
 });
 
+$router->get('/auth', function ($params) {
+    $host  = $_SERVER['HTTP_HOST'];
+    if (isset($params['type'])) {
+        if ($params['type'] === 'login' || $params['type'] === 'signup') {
+            require_once $GLOBALS['path'] . 'auth.php';
+        } else {
+            header("Location: http://$host/auth?type=login", true, 301);
+            exit;
+        }
+    } else {
+        header("Location: http://$host/auth?type=login", true, 301);
+        exit;
+    }
+});
+
 require_once  $path . "fetch/fetch_products.php";
 foreach ($arrangedProductsCategory as $value) {
     $router->get("/products/{$value}", function ($params) {

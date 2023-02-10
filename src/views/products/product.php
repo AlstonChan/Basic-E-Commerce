@@ -8,7 +8,7 @@
                             <div class="card">
                                 <div class="card-image">
                                     <figure style="height: 200px" class="image">
-                                        <img style="height: 100%; object-fit:cover" src=" <?php echo $product["thumbnail"]; ?>" style="border-radius:4px">
+                                        <img class="mx-auto" style="height: 100%; object-fit:cover" src=" <?php echo $product["thumbnail"]; ?>" style="border-radius:4px">
                                     </figure>
                                 </div>
                                 <div class="card-content px-3 py-2 is-capitalized">
