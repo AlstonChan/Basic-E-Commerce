@@ -114,14 +114,31 @@
 }
 
 /* auth page  */
+.custom-box {
+  width: fit-content !important;
+  min-width: 350px;
+}
+@media screen and (max-width: 400px) {
+  .custom-box {
+    min-width: 0;
+  }
+}
 .path-auth {
   transform-origin: 50% 0%;
+}
+
+.icon {
+  opacity: 0.5;
+  transition: opacity 160ms ease-in-out;
+}
+.input:focus ~ .icon {
+  opacity: 1;
 }
 .background--custom {
   background-color: #ffffff;
   position: absolute;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   top: 0;
   left: 0;

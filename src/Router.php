@@ -36,6 +36,19 @@ class Router
         return $this;
     }
 
+    public function post(string $path, callable $callback): self
+    {
+        $this->routeHandler(self::METHOD_POST, $path, $callback);
+
+        return $this;
+    }
+    public function put(string $path, callable $callback): self
+    {
+        $this->routeHandler(self::METHOD_PUT, $path, $callback);
+
+        return $this;
+    }
+
     public function routeHandler(string $method, string $path, callable $callback): void
     {
         $this->routes[$method . $path] = [

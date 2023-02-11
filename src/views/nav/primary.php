@@ -48,10 +48,10 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
             </div>
             <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
                 <div class="dropdown-content">
-                    <a class="dropdown-item has-text-centered has-background-primary has-text-primary-light pr-4">
+                    <a href="/auth?type=signup" class="dropdown-item has-text-centered has-background-primary has-text-primary-light pr-4">
                         Sign up
                     </a>
-                    <a class="dropdown-item has-text-centered pr-4">
+                    <a href="/auth?type=login" class="dropdown-item has-text-centered pr-4">
                         Log in
                     </a>
                 </div>
