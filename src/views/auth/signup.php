@@ -1,56 +1,47 @@
-<!-- username  -->
-<div class="field">
-    <label class="label" for="username_<?php echo $params['type'] ?>">Username</label>
-    <p class="control has-icons-left has-icons-right">
-        <input class="input" type="text" placeholder="Username" name="username_<?php echo $params['type'] ?>" id="username_<?php echo $params['type'] ?>">
-        <span class="icon is-small is-left">
-            <img src="/assets/icon/user.svg" style="vertical-align:middle">
-        </span>
-        <!-- <span class="icon is-small is-right">
-                                <img src="/assets/icon/check_green.svg" style="vertical-align:middle">
-                            </span> -->
-    </p>
-    <p class="help">This is a help text</p>
-</div>
+<?php
 
-<!-- email address  -->
-<div class="field">
-    <label class="label" for="email_<?php echo $params['type'] ?>">Email</label>
-    <p class="control has-icons-left has-icons-right">
-        <input class="input" type="email" placeholder="Email" name="email_<?php echo $params['type'] ?>" id="email_<?php echo $params['type'] ?>">
-        <span class="icon is-small is-left">
-            <img src="/assets/icon/mail.svg" style="vertical-align:middle">
-        </span>
-        <!-- <span class="icon is-small is-right">
-                                <img src="/assets/icon/check_green.svg" style="vertical-align:middle">
-                            </span> -->
-    </p>
-    <p class="help">This is a help text</p>
-</div>
+if (isset($_SESSION['formErrors'])) {
+    // username 
+    if (isset($_SESSION['formErrors']['username_signup'])) {
+        $username_errs = $_SESSION['formErrors']['username_signup'];
+    } else if (isset($_SESSION['formValues']['username_signup'])) {
+        $username_value = $_SESSION['formValues']['username_signup'];
+    }
 
-<!-- password  -->
-<div class="field">
-    <label class="label" for="pass_<?php echo $params['type'] ?>">Password</label>
-    <p class="control has-icons-left">
-        <input class="input" type="password" placeholder="Password" name="pass_<?php echo $params['type'] ?>" id="pass_<?php echo $params['type'] ?>">
-        <span class="icon is-small is-left">
-            <img src="/assets/icon/lock.svg" style="vertical-align:middle">
-        </span>
-    </p>
-    <p class="help"><a href="" class="has-text-weight-bold">Forget Password?</a></p>
-    <p class="help">This is a help text</p>
-</div>
+    // email 
+    if (isset($_SESSION['formErrors']['email_signup'])) {
+        $email_errs = $_SESSION['formErrors']['email_signup'];
+    } else if (isset($_SESSION['formValues']['email_signup'])) {
+        $email_value = $_SESSION['formValues']['email_signup'];
+    }
 
-<!-- re-enter password  -->
-<div class="field">
-    <label class="label" for="re_pass_<?php echo $params['type'] ?>">Confirm Password</label>
-    <p class="control has-icons-left">
-        <input class="input" type="password" placeholder="Re-enter Password" name="re_pass_<?php echo $params['type'] ?>" id="re_pass_<?php echo $params['type'] ?>">
-        <span class="icon is-small is-left">
-            <img src="/assets/icon/lock.svg" style="vertical-align:middle">
-        </span>
-    </p>
-    <p class="help">This is a help text</p>
-</div>
+    // password 
+    if (isset($_SESSION['formErrors']['pass_signup'])) {
+        $password_errs = $_SESSION['formErrors']['pass_signup'];
+    } else if (isset($_SESSION['formErrors']['re_pass_signup'])) {
+        // confirm password 
+        $confirm_password_errs = $_SESSION['formErrors']['re_pass_signup'];
+    }
+}
 
-<p>Already have an account? <a href="/auth?type=login">Log in</a> here!</p>
+$signUpInputList = ['username', 'email', 'password', 'confirm_password'];
+
+foreach ($signUpInputList as $input) {
+    if (isset(${$input . "_errs"})) {
+        $inputErrors = ${$input . "_errs"};
+    } else if (
+        $input === 'confirm_password'
+        || $input === 'password'
+    ) {
+        $inputErrors = 'NOT_SHOWN';
+    } else $inputErrors = null;
+
+    if (isset(${$input . "_value"})) {
+        $input_value = ${$input . "_value"};
+    } else $input_value = null;
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/views/input/" . $input . ".php";
+}
+
+?>
+
+<p>Already have an account? <a class="has-text-weight-bold" href="/auth?type=login">Log in</a> here!</p>

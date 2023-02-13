@@ -34,16 +34,16 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
                         <?php
 
                         if ($params['type'] === 'login') {
-                            require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/login.php";
+                            require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/login.php";
                         } else {
-                            require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/signup.php";
+                            require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/signup.php";
                         }
 
                         ?>
 
                         <div class="field mt-2">
                             <p class="control">
-                                <button class="button is-success" type="submit">
+                                <button class="button is-success" type="submit" name="auth_type" value="<?php echo $params['type'] ?>">
                                     <?php echo $params['type'] === 'login' ? 'Log In' : 'Sign Up' ?>
                                 </button>
                             </p>

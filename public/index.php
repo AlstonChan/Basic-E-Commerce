@@ -50,10 +50,12 @@ $router->get('/auth', function ($params) {
 });
 
 $router->post('/auth/action/login', function () {
-    require_once  $GLOBALS['controllersPath'] . 'auth/process_login.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php";
+    require  $GLOBALS['controllersPath'] . 'auth/process_login.php';
 });
 $router->post('/auth/action/signup', function () {
-    require_once  $GLOBALS['controllersPath'] . 'auth/process_signup.php';
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php";
+    require  $GLOBALS['controllersPath'] . 'auth/process_signup.php';
 });
 
 require_once  $controllersPath . "/fetch/fetch_products.php";
