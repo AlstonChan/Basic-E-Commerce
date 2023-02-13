@@ -43,7 +43,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
 
                         <div class="field mt-2">
                             <p class="control">
-                                <button class="button is-success" type="submit">
+                                <button class="button is-success" type="submit" name="auth_type" value="<?php echo $params['type'] ?>">
                                     <?php echo $params['type'] === 'login' ? 'Log In' : 'Sign Up' ?>
                                 </button>
                             </p>

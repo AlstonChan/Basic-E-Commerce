@@ -22,4 +22,4 @@
     <p class="help"><a href="" class="has-text-weight-bold">Forget Password?</a></p>
     <p class="help">This is a help text</p>
 </div>
-<p>Don't have an account? <a href="/auth?type=signup">Sign Up</a> here!</p>
+<p>Don't have an account? <a class="has-text-weight-bold" href="/auth?type=signup">Sign Up</a> here!</p>

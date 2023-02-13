@@ -53,4 +53,4 @@
     <p class="help">This is a help text</p>
 </div>
 
-<p>Already have an account? <a href="/auth?type=login">Log in</a> here!</p>
+<p>Already have an account? <a class="has-text-weight-bold" href="/auth?type=login">Log in</a> here!</p>
