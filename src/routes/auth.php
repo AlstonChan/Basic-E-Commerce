@@ -34,9 +34,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
                         <?php
 
                         if ($params['type'] === 'login') {
-                            require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/login.php";
+                            require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/login.php";
                         } else {
-                            require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/signup.php";
+                            require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/signup.php";
                         }
 
                         ?>

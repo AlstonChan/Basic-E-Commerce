@@ -1,7 +1,6 @@
 <?php
 
-session_name('shop_session_id');
-session_start(['cookie_httponly' => true, 'cookie_secure' => true]);
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php"
 
 ?>
 

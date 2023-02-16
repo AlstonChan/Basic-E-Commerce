@@ -5,37 +5,47 @@ spl_autoload_register(function ($class) {
     require $path;
 });
 
-use Src\Controllers\Auth\CheckPassword;
-
-var_dump($_POST);
+use Src\Controllers\Auth\Validate\CheckPassword;
+use Src\Controllers\Auth\Validate\CheckUsername;
 
 if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
-    $checkPwd = new CheckPassword($_POST['pass_signup']);
-    $errors = $checkPwd->getErrors();
+    $formErrors = [];
+    $formValues = [];
 
-    var_dump($errors);
+    // username 
+    $checkUser = new CheckUsername($_POST['username_signup']);
+    $usernameErrors = $checkUser->validateName()->getErrors();
+    if (empty($usernameErrors)) {
+        $formValues['username_signup'] = $_POST['username_signup'];
+    } else $formErrors['username_signup'] = $usernameErrors;
 
-    if (empty($_POST["username_signup"])) {
-        die("Name is required");
-    }
-
+    // email 
     if (!filter_var($_POST["email_signup"], FILTER_VALIDATE_EMAIL)) {
-        die("Valid email is required");
+        $formErrors["email_value"] = ("Valid email is required");
+    } else $formValues['email_signup'] = $_POST["email_signup"];
+
+    // password
+    $checkPwd = new CheckPassword($_POST['pass_signup']);
+    $passErrors = $checkPwd->validatePass()->getErrors();
+    if (!empty($passErrors)) {
+        $formErrors['pass_signup'] = $passErrors;
     }
 
-    if (strlen($_POST["pass_signup"]) < 8) {
-        die("Password must be at least 8 characters");
+    // confirm password 
+    $isPassMatch = $checkPwd->isPassMatch($_POST["re_pass_signup"]);
+    if (!$isPassMatch) {
+        $formErrors['re_pass_signup'] = "Password doesn't match";
     }
 
-    if (!preg_match("/[a-z]/i", $_POST["pass_signup"])) {
-        die("Password must contain at least one letter");
-    }
+    $_SESSION['formErrors'] = $formErrors;
+    $_SESSION['formValues'] = $formValues;
 
-    if (!preg_match("/[0-9]/", $_POST["pass_signup"])) {
-        die("Password must contain at least one number");
-    }
+    $host  = $_SERVER['HTTP_HOST'];
 
-    if ($_POST["pass_signup"] !== $_POST["re_pass_signup"]) {
-        die("Passwords must match");
+    if (empty($formErrors)) {
+        header("Location: http://$host/", true);
+    } else {
+        // insert data into database
+        header("Location: http://$host/auth?type=signup", true);
     }
 }
