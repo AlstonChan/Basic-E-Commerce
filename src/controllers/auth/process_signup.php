@@ -21,7 +21,7 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
 
     // email 
     if (!filter_var($_POST["email_signup"], FILTER_VALIDATE_EMAIL)) {
-        $formErrors["email_value"] = "Valid email is required";
+        $formErrors["email_signup"] = "Valid email is required";
     } else $formValues['email_signup'] = $_POST["email_signup"];
 
     // password
