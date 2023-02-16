@@ -35,7 +35,7 @@ $router->get('/products', function ($params) {
 });
 
 $router->get('/auth', function ($params) {
-    $host  = $_SERVER['HTTP_HOST'];
+    $host = $_SERVER['HTTP_HOST'];
     if (isset($params['type'])) {
         if ($params['type'] === 'login' || $params['type'] === 'signup') {
             require_once $GLOBALS['routesPath'] . 'auth.php';
@@ -49,13 +49,20 @@ $router->get('/auth', function ($params) {
     }
 });
 
-$router->post('/auth/action/login', function () {
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php";
-    require  $GLOBALS['controllersPath'] . 'auth/process_login.php';
-});
-$router->post('/auth/action/signup', function () {
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php";
-    require  $GLOBALS['controllersPath'] . 'auth/process_signup.php';
+$router->post('/auth', function ($params) {
+    if (isset($params['type'])) {
+        if ($params['type'] === 'login') {
+            require_once $GLOBALS['controllersPath'] . 'auth/process_login.php';
+        } else if ($params['type'] === 'signup') {
+            require_once $GLOBALS['controllersPath'] . 'auth/process_signup.php';
+        } else {
+            require_once  $GLOBALS['routesPath'] . 'error.php';
+            exit;
+        }
+    } else {
+        require_once  $GLOBALS['routesPath'] . 'error.php';
+        exit;
+    }
 });
 
 require_once  $controllersPath . "/fetch/fetch_products.php";

@@ -1,7 +1,6 @@
 <?php
 
 $page = $params['type'] === "login" ? "Log in" : "Sign Up";
-$actionPath = "/auth/action/" . $params['type'];
 
 require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
 
@@ -30,7 +29,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
                         <?php echo $params['type'] === 'login' ? 'User log In' : 'Sign up new account' ?>
                     </h2>
 
-                    <form action="<?php echo $actionPath; ?>" autocomplete="on" method="post">
+                    <form action="" autocomplete="on" method="post">
                         <?php
 
                         if ($params['type'] === 'login') {

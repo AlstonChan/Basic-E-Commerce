@@ -24,6 +24,12 @@ $label-colors: $form-colors !default
   display: block
   font-size: $help-size
   margin-top: 0.25rem
+  &-error
+    font-weight: bold
+    font-family: $family-monospace
+    background: white
+    border-radius: 5px
+    padding-left: 5px
   @each $name, $pair in $label-colors
     $color: nth($pair, 1)
     &.is-#{$name}

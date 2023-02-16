@@ -21,5 +21,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php"
     <link rel="stylesheet" href="/css/bulma.css">
 
     <!-- Alpine Js  -->
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script async defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>

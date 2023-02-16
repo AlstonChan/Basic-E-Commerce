@@ -21,11 +21,11 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
 
     // email 
     if (!filter_var($_POST["email_signup"], FILTER_VALIDATE_EMAIL)) {
-        $formErrors["email_value"] = ("Valid email is required");
+        $formErrors["email_value"] = "Valid email is required";
     } else $formValues['email_signup'] = $_POST["email_signup"];
 
     // password
-    $checkPwd = new CheckPassword($_POST['pass_signup']);
+    $checkPwd = new CheckPassword(password: $_POST['pass_signup'], mixedCase: true, minNums: 1);
     $passErrors = $checkPwd->validatePass()->getErrors();
     if (!empty($passErrors)) {
         $formErrors['pass_signup'] = $passErrors;
@@ -37,15 +37,12 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
         $formErrors['re_pass_signup'] = "Password doesn't match";
     }
 
-    $_SESSION['formErrors'] = $formErrors;
-    $_SESSION['formValues'] = $formValues;
-
     $host  = $_SERVER['HTTP_HOST'];
 
     if (empty($formErrors)) {
+        // insert data into database
         header("Location: http://$host/", true);
     } else {
-        // insert data into database
-        header("Location: http://$host/auth?type=signup", true);
+        require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/routes/auth.php";
     }
 }

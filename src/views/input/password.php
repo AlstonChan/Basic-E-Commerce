@@ -11,6 +11,6 @@
             </span>
         <?php endif; ?>
     </p>
-    <p class="help"><a href="" class="has-text-weight-bold">Forget Password?</a></p>
     <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/input/error_footer.php"; ?>
+    <p class="help"><a href="" class="has-text-weight-bold">Forget Password?</a></p>
 </div>
