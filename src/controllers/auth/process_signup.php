@@ -9,6 +9,8 @@ use Src\Controllers\Auth\Validate\CheckPassword;
 use Src\Controllers\Auth\Validate\CheckUsername;
 
 if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
+    $db = require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/models/db.php";
+
     $formErrors = [];
     $formValues = [];
 
@@ -20,8 +22,33 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
     } else $formErrors['username_signup'] = $usernameErrors;
 
     // email 
+    function isEmailUsed($db, string $email): bool
+    {
+        $query = "SELECT email FROM users WHERE email = ?;";
+        $stmt = mysqli_stmt_init($db);
+
+        if (!mysqli_stmt_prepare($stmt, $query)) {
+            return true;
+        } else {
+            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_execute($stmt);
+
+            $result = mysqli_stmt_get_result($stmt);
+
+            $row = mysqli_fetch_assoc($result);
+
+            if ($row) {
+                return true;
+            } else return false;
+        }
+
+        mysqli_stmt_close($stmt);
+    }
+
     if (!filter_var($_POST["email_signup"], FILTER_VALIDATE_EMAIL)) {
         $formErrors["email_signup"] = "Valid email is required";
+    } else if (isEmailUsed($db, $_POST["email_signup"])) {
+        $formErrors["email_signup"] = "This email has already been registered!";
     } else $formValues['email_signup'] = $_POST["email_signup"];
 
     // password
@@ -40,8 +67,20 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
     $host  = $_SERVER['HTTP_HOST'];
 
     if (empty($formErrors)) {
-        // insert data into database
-        header("Location: http://$host/", true);
+        $query = "INSERT INTO users (username, email, password) VALUES (?,?,?);";
+        $stmt = mysqli_stmt_init($db);
+
+        if (!mysqli_stmt_prepare($stmt, $query)) {
+            die('An error occured');
+        } else {
+            $hashed = password_hash($_POST['pass_signup'], PASSWORD_DEFAULT);
+
+            mysqli_stmt_bind_param($stmt, "sss", $_POST['username_signup'], $_POST["email_signup"], $hashed);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_close($stmt);
+            header("Location: http://$host/", true);
+            exit();
+        }
     } else {
         require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/routes/auth.php";
     }
