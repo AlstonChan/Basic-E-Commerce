@@ -39,6 +39,8 @@ $router->get('/auth', function ($params) {
     if (isset($params['type'])) {
         if ($params['type'] === 'login' || $params['type'] === 'signup') {
             require_once $GLOBALS['routesPath'] . 'auth.php';
+        } else if ($params['type'] === 'logout') {
+            require_once $GLOBALS['controllersPath'] . 'auth/process_logout.php';
         } else {
             header("Location: http://$host/auth?type=login", true, 301);
             exit;

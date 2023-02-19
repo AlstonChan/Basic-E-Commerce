@@ -1,6 +1,6 @@
 <?php
 
-$page = $params['type'] === "login" ? "Log in" : "Sign Up";
+$page = $params['type'] === "login" ? "Log In" : ($params['type'] === 'signup' ? "Sign Up" : "Log out");
 
 require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
 

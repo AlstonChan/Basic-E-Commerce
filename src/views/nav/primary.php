@@ -6,6 +6,11 @@ $navItem = [
     ["title" => "All Products", "link" => $homepageLink . "all_product"]
 ];
 
+$userItem = [
+    ["title" => "Account", "link" =>  $homepageLink . "account"],
+    ["title" => "Logout", "link" =>  $homepageLink . "auth?type=logout"]
+];
+
 require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.php";
 
 ?>
@@ -22,7 +27,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
         <!-- cart dropdown  -->
         <div :class="cart ? 'is-active' : ''" class="ml-auto dropdown is-right is-align-self-center">
             <div class="dropdown-trigger">
-                <button x-on:click="cart = !cart" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
+                <button x-on:click="cart = !cart; user = false; open = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
                     <figure class="image">
                         <img src="/assets/icon/cart.svg">
                     </figure>
@@ -31,7 +36,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
             <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
                 <div class="dropdown-content">
                     <div class="dropdown-item has-text-centered">
-                        Cart Empty
+                        Cart is Empty
                     </div>
                 </div>
             </div>
@@ -40,21 +45,29 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
         <!-- user icon -->
         <div :class="user ? 'is-active' : ''" class="dropdown is-right is-align-self-center">
             <div class="dropdown-trigger">
-                <button x-on:click="user = !user" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
+                <button x-on:click="user = !user; cart = false; open = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
                     <figure class="image">
                         <img src="/assets/icon/user.svg">
                     </figure>
                 </button>
             </div>
             <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
-                <div class="dropdown-content">
-                    <a href="/auth?type=signup" class="dropdown-item has-text-centered has-background-primary has-text-primary-light pr-4">
-                        Sign up
-                    </a>
-                    <a href="/auth?type=login" class="dropdown-item has-text-centered pr-4">
-                        Log in
-                    </a>
-                </div>
+                <?php if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['user_id'])) : ?>
+                    <?php foreach ($userItem as $value) : ?>
+                        <a href="<?php echo $value["link"]; ?>" class="dropdown-item">
+                            <?php echo $value["title"]; ?>
+                        </a>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <div class="dropdown-content">
+                        <a href="/auth?type=signup" class="dropdown-item has-text-centered has-background-primary has-text-primary-light pr-4">
+                            Sign up
+                        </a>
+                        <a href="/auth?type=login" class="dropdown-item has-text-centered pr-4">
+                            Log in
+                        </a>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
@@ -62,7 +75,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
         <div :class="open ? 'is-active' : ''" class="ml dropdown is-right defaultCard">
 
             <!-- Hamburger -->
-            <a x-on:click="open = !open" role="button" class="navbar-burger dropdown-trigger" aria-controls="dropdown-menu" aria-haspopup="true" aria-label="menu" aria-expanded="false" data-target="topNavBar">
+            <a x-on:click="open = !open; cart = false; user = false" role="button" class="navbar-burger dropdown-trigger" aria-controls="dropdown-menu" aria-haspopup="true" aria-label="menu" aria-expanded="false" data-target="topNavBar">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
@@ -113,7 +126,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
                 <div class="buttons">
                     <div :class="cart ? 'is-active' : ''" class="dropdown">
                         <div class="dropdown-trigger">
-                            <button x-on:click="cart = !cart" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
+                            <button x-on:click="cart = !cart; user = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
                                 <figure class="image">
                                     <img src="/assets/icon/cart.svg">
                                 </figure>
@@ -127,12 +140,33 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
                             </div>
                         </div>
                     </div>
-                    <a href="/auth?type=signup" class="button is-primary">
-                        <strong>Sign up</strong>
-                    </a>
-                    <a href="/auth?type=login" class="button is-light">
-                        Log in
-                    </a>
+                    <?php if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['user_id'])) : ?>
+                        <div :class="user ? 'is-active' : ''" class="dropdown is-right">
+                            <div class="dropdown-trigger">
+                                <button x-on:click="user = !user; cart = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="user_big">
+                                    <figure class="image">
+                                        <img src="/assets/icon/user.svg">
+                                    </figure>
+                                </button>
+                            </div>
+                            <div style="z-index:31" class="dropdown-menu" id="user_big" role="menu">
+                                <div class="dropdown-content">
+                                    <?php foreach ($userItem as $value) : ?>
+                                        <a href="<?php echo $value["link"]; ?>" class="dropdown-item">
+                                            <?php echo $value["title"]; ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php else : ?>
+                        <a href="/auth?type=signup" class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a href="/auth?type=login" class="button is-light">
+                            Log in
+                        </a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
