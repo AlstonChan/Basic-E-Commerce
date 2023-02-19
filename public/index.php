@@ -34,6 +34,17 @@ $router->get('/products', function ($params) {
     }
 });
 
+$router->get('/account', function () {
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php";
+
+    if (!isset($_SESSION["user_id"]) || !isset($_SESSION["username"]) || !isset($_SESSION["email"])) {
+        require_once  $GLOBALS['routesPath'] . 'error.php';
+        exit;
+    } else {
+        require_once  $GLOBALS['routesPath'] . 'account.php';
+    }
+});
+
 $router->get('/auth', function ($params) {
     $host = $_SERVER['HTTP_HOST'];
     if (isset($params['type'])) {
