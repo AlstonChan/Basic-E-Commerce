@@ -4,6 +4,8 @@ A basic e-commerce site built using PHP, Alpine.js and Bulma framework.
 
 ## Getting Started
 
+### PHP Setup
+
 1. Install [XAMPP](https://www.apachefriends.org/download.html) if you haven't have one on your machine, as this *web server solution stack package* will get you up and ready for developing **PHP** easily.
 
 2. Locate your copies of *XAMPP* and enter the directory, search for *htdocs* and clone this respository inside the *htdocs* directory.
@@ -52,6 +54,29 @@ A basic e-commerce site built using PHP, Alpine.js and Bulma framework.
     ```
 
 5. Start your *Apache* web server and *MySQL* database in the *XAMPP* control panel. Then, open up your web browser and enter **<http://ecommerce.local>**, you should see the page up and running with the link functioning flawlessly.
+
+### MySQL Setup
+
+This setting is essential to make the **Authentication System** to work smoothly without error, a `MySQL` database is used to store user credentials to be used later in `Log In` process.
+
+1. Navigate to [phpmyadmin panel](http://localhost/phpmyadmin) at your browser, select **Database** at the navigation bar. Under **Create database**, enter **`Shop`** as the database name and click the create button to create a database.
+
+    ![phpmyadmin panel](public/readme/figure2.jpg)
+
+2. You should see the newly created database named **`Shop`** to be display at the left side of the panel, which have a list of databases. Select the database (Shop), and click *`SQL`* at the top of page to run SQL query.
+
+3. Enter the following query into the textbox to create a table for storing user credentials.
+
+```SQL
+CREATE TABLE users (
+    userId INT(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    username varchar(255) NOT NULL,
+    email varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
+);
+```
+
+That's it, the application authentication system should be now working correctly.
 
 ## Sass compilation
 
