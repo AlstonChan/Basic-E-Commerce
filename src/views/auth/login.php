@@ -7,7 +7,6 @@ if ($isPost) {
         $email_errs = $formErrors['email_login'];
     } else if (isset($formValues['email_login'])) {
         $email_value = $formValues['email_login'];
-
         if (isset($formErrors['pass_login'])) {
             // password 
             $password_errs = $formErrors['pass_login'];
