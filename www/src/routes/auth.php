@@ -18,7 +18,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
                 <div class="custom-box-auth columnCard-info py-3 px-5">
                     <figure class="mx-auto my-3" style="width:fit-content">
                         <a href="/">
-                            <img src="/assets/logo.svg" width="224" height="56" style="vertical-align:middle">
+                            <img src="/public/assets/logo.svg" width="224" height="56" style="vertical-align:middle">
                         </a>
                     </figure>
 

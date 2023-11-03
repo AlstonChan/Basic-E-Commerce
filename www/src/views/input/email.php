@@ -5,11 +5,11 @@
                                                                                                                                                                 echo $input_value;
                                                                                                                                                             } ?>">
         <span class="icon is-small is-left">
-            <img src="/assets/icon/mail.svg" style="vertical-align:middle">
+            <img src="/public/assets/icon/mail.svg" style="vertical-align:middle">
         </span>
         <?php if ($inputErrors === null) : ?>
             <span class="icon is-small is-right">
-                <img src="/assets/icon/check_green.svg" style="vertical-align:middle">
+                <img src="/public/assets/icon/check_green.svg" style="vertical-align:middle">
             </span>
         <?php endif; ?>
     </p>

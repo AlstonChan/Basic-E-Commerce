@@ -58,8 +58,9 @@ class Router
         ];
     }
 
-    public function pageErrorHandler(int $code = 404, callable $callback): self
+    public function pageErrorHandler(int $code, callable $callback): self
     {
+        if (empty($code)) $code = 404;
         header("HTTP/1.1 $code Not Found");
         $this->pageError = $callback;
         return $this;

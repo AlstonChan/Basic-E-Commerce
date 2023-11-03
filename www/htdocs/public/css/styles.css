@@ -1,5 +1,5 @@
 .hero {
-  background-image: url(/assets/hero_phone_sml.jpg);
+  background-image: url(/public/assets/hero_phone_sml.jpg);
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
@@ -10,7 +10,7 @@
   min-width: 3500px;
   height: 100px;
   background-repeat: repeat-x;
-  background-image: url(/assets/wave.svg);
+  background-image: url(/public/assets/wave.svg);
   background-color: #fff;
 }
 

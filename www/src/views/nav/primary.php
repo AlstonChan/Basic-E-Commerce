@@ -20,7 +20,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
         <!-- navbar brand show only on small screen breakpoint -->
         <div class="navbar-brand my-0 navbar-break-show">
             <a href="<?php echo $homepageLink; ?>">
-                <img src="/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
+                <img src="/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
             </a>
         </div>
 
@@ -29,7 +29,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
             <div class="dropdown-trigger">
                 <button x-on:click="cart = !cart; user = false; open = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
                     <figure class="image">
-                        <img src="/assets/icon/cart.svg">
+                        <img src="/public/assets/icon/cart.svg">
                     </figure>
                 </button>
             </div>
@@ -47,7 +47,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
             <div class="dropdown-trigger">
                 <button x-on:click="user = !user; cart = false; open = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
                     <figure class="image">
-                        <img src="/assets/icon/user.svg">
+                        <img src="/public/assets/icon/user.svg">
                     </figure>
                 </button>
             </div>
@@ -116,7 +116,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
         <!-- middle brand  -->
         <div class="navbar-brand mx-auto my-0">
             <a href="<?php echo $homepageLink; ?>">
-                <img src="/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
+                <img src="/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
             </a>
         </div>
 
@@ -128,7 +128,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
                         <div class="dropdown-trigger">
                             <button x-on:click="cart = !cart; user = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
                                 <figure class="image">
-                                    <img src="/assets/icon/cart.svg">
+                                    <img src="/public/assets/icon/cart.svg">
                                 </figure>
                             </button>
                         </div>
@@ -145,7 +145,7 @@ require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.p
                             <div class="dropdown-trigger">
                                 <button x-on:click="user = !user; cart = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="user_big">
                                     <figure class="image">
-                                        <img src="/assets/icon/user.svg">
+                                        <img src="/public/assets/icon/user.svg">
                                     </figure>
                                 </button>
                             </div>

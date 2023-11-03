@@ -14,11 +14,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php";
     <title>Basic E-Commerce<?php if (isset($page)) echo " | " . $page; ?></title>
     <meta name="title" content="Basic E-Commerce<?php if (isset($page)) echo " | " . $page; ?>" />
 
-    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="icon" href="/public/assets/favicon.ico">
 
     <!-- Stylesheet  -->
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="/css/bulma.css">
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/bulma.css">
 
     <!-- Alpine Js  -->
     <script async defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>

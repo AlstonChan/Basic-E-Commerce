@@ -1,6 +1,6 @@
 <?php
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/assets/testimonials.json";
+$file = $_SERVER['DOCUMENT_ROOT'] . "/public/assets/testimonials.json";
 $data = json_decode(file_get_contents($file), true);
 
 $data = array_chunk($data, 3);
