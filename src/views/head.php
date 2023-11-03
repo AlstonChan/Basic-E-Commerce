@@ -17,7 +17,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/session.php";
     <link rel="icon" href="/public/assets/favicon.ico">
 
     <!-- Stylesheet  -->
-    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/dist/output.css">
     <link rel="stylesheet" href="/public/css/bulma.css">
 
     <!-- Alpine Js  -->

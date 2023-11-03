@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .hero {
   background-image: url(/public/assets/hero_phone_sml.jpg);
   background-position: center;

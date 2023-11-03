@@ -1,4 +1,4 @@
-<section class="hero is-medium  is-black">
+<section class="hero is-medium is-black">
     <div class="hero-body mx-auto" style="min-width:800px">
         <div class="mr-6 is-justify-content-center">
             <p class="title is-size-2-desktop">

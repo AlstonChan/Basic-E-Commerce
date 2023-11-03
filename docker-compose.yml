@@ -13,7 +13,7 @@ services:
     networks:
       - net
     volumes:
-      - ./www:/var/www/default 
+      - ./:/var/www/default 
       - ./config/php.ini:/etc/php-custom.d/php.ini
     env_file:
       - .env.apache
@@ -27,7 +27,7 @@ services:
     networks:
       - net
     volumes:
-      - ./www:/var/www/default
+      - ./:/var/www/default
       - ./config/php.ini:/etc/php-custom.d/php.ini
     environment:
       - DEBUG_ENTRYPOINT=2
