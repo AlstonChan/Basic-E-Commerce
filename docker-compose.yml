@@ -1,0 +1,34 @@
+version: "3"
+
+name: php-commerce
+
+services:
+  apache:
+    image: devilbox/apache-2.4
+    container_name: apache
+    restart: unless-stopped
+    ports:
+      - 3000:80
+      - 447:443
+    networks:
+      - net
+    volumes:
+      - ./www:/var/www/default 
+    env_file:
+      - .env.apache
+
+  php-fpm:
+    image: devilbox/php-fpm:8.2-work
+    container_name: php8.2
+    restart: unless-stopped
+    networks:
+      - net
+    volumes:
+      - ./www:/var/www/default
+    environment:
+      - DEBUG_ENTRYPOINT=2
+      - TIMEZONE=Asia/Kuala_Lumpur
+
+networks:
+  net:
+    driver: bridge
