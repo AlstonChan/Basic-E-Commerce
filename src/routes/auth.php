@@ -1,9 +1,13 @@
 <?php
 
-$page = $params['type'] === "login" ? "Log In" : ($params['type'] === 'signup' ? "Sign Up" : "Log out");
+$page =
+    $params['type'] === 'login'
+        ? 'Log In'
+        : ($params['type'] === 'signup'
+            ? 'Sign Up'
+            : 'Log out');
 
-require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
-
+require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/head.php';
 ?>
 
 <body>
@@ -23,27 +27,33 @@ require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php"
                     </figure>
 
                     <h1 class="title has-text-centered has-text-weight-bold">
-                        <?php echo $params['type'] === 'login' ? 'Welcome back !' : 'Create a new account' ?>
+                        <?php echo $params['type'] === 'login'
+                            ? 'Welcome back !'
+                            : 'Create a new account'; ?>
                     </h1>
                     <h2 class="subtitle has-text-centered">
-                        <?php echo $params['type'] === 'login' ? 'User log In' : 'Sign up new account' ?>
+                        <?php echo $params['type'] === 'login'
+                            ? 'User log In'
+                            : 'Sign up new account'; ?>
                     </h2>
 
                     <form action="" autocomplete="on" method="post">
-                        <?php
-
-                        if ($params['type'] === 'login') {
-                            require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/login.php";
+                        <?php if ($params['type'] === 'login') {
+                            require $_SERVER['DOCUMENT_ROOT'] .
+                                '/../src/views/auth/login.php';
                         } else {
-                            require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/auth/signup.php";
-                        }
-
-                        ?>
+                            require $_SERVER['DOCUMENT_ROOT'] .
+                                '/../src/views/auth/signup.php';
+                        } ?>
 
                         <div class="field mt-2">
                             <p class="control">
-                                <button class="button is-success" type="submit" name="auth_type" value="<?php echo $params['type'] ?>">
-                                    <?php echo $params['type'] === 'login' ? 'Log In' : 'Sign Up' ?>
+                                <button class="button is-success" type="submit" name="auth_type" value="<?php echo $params[
+                                    'type'
+                                ]; ?>">
+                                    <?php echo $params['type'] === 'login'
+                                        ? 'Log In'
+                                        : 'Sign Up'; ?>
                                 </button>
                             </p>
                         </div>

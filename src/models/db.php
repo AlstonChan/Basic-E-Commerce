@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$dbname = "shop";
-$username = "root";
-$password = "";
+$host = 'localhost';
+$dbname = 'shop';
+$username = 'root';
+$password = '';
 
 $mysqli = new mysqli(
     hostname: $host,
@@ -13,7 +13,7 @@ $mysqli = new mysqli(
 );
 
 if (!$mysqli) {
-    die("Connection error: " . $mysqli_connect_error());
+    die('Connection error: ' . $mysqli_connect_error());
 }
 
 return $mysqli;

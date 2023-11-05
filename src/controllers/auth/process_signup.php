@@ -1,7 +1,10 @@
 <?php
 
 spl_autoload_register(function ($class) {
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/../" . lcfirst(str_replace('\\', '/', $class) . ".php");
+    $path =
+        $_SERVER['DOCUMENT_ROOT'] .
+        '/../' .
+        lcfirst(str_replace('\\', '/', $class) . '.php');
     require $path;
 });
 
@@ -9,28 +12,30 @@ use Src\Controllers\Auth\Validate\CheckPassword;
 use Src\Controllers\Auth\Validate\CheckUsername;
 
 if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
-    $db = require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/models/db.php";
+    $db = require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/models/db.php';
 
     $formErrors = [];
     $formValues = [];
 
-    // username 
+    // username
     $checkUser = new CheckUsername($_POST['username_signup']);
     $usernameErrors = $checkUser->validateName()->getErrors();
     if (empty($usernameErrors)) {
         $formValues['username_signup'] = $_POST['username_signup'];
-    } else $formErrors['username_signup'] = $usernameErrors;
+    } else {
+        $formErrors['username_signup'] = $usernameErrors;
+    }
 
-    // email 
+    // email
     function isEmailUsed($db, string $email): bool
     {
-        $query = "SELECT email FROM users WHERE email = ?;";
+        $query = 'SELECT email FROM users WHERE email = ?;';
         $stmt = mysqli_stmt_init($db);
 
         if (!mysqli_stmt_prepare($stmt, $query)) {
             return true;
         } else {
-            mysqli_stmt_bind_param($stmt, "s", $email);
+            mysqli_stmt_bind_param($stmt, 's', $email);
             mysqli_stmt_execute($stmt);
 
             $result = mysqli_stmt_get_result($stmt);
@@ -39,35 +44,44 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
 
             if ($row) {
                 return true;
-            } else return false;
+            } else {
+                return false;
+            }
         }
 
         mysqli_stmt_close($stmt);
     }
 
-    if (!filter_var($_POST["email_signup"], FILTER_VALIDATE_EMAIL)) {
-        $formErrors["email_signup"] = "Valid email is required";
-    } else if (isEmailUsed($db, $_POST["email_signup"])) {
-        $formErrors["email_signup"] = "This email has already been registered!";
-    } else $formValues['email_signup'] = $_POST["email_signup"];
+    if (!filter_var($_POST['email_signup'], FILTER_VALIDATE_EMAIL)) {
+        $formErrors['email_signup'] = 'Valid email is required';
+    } elseif (isEmailUsed($db, $_POST['email_signup'])) {
+        $formErrors['email_signup'] = 'This email has already been registered!';
+    } else {
+        $formValues['email_signup'] = $_POST['email_signup'];
+    }
 
     // password
-    $checkPwd = new CheckPassword(password: $_POST['pass_signup'], mixedCase: true, minNums: 1);
+    $checkPwd = new CheckPassword(
+        password: $_POST['pass_signup'],
+        mixedCase: true,
+        minNums: 1
+    );
     $passErrors = $checkPwd->validatePass()->getErrors();
     if (!empty($passErrors)) {
         $formErrors['pass_signup'] = $passErrors;
     }
 
-    // confirm password 
-    $isPassMatch = $checkPwd->isPassMatch($_POST["re_pass_signup"]);
+    // confirm password
+    $isPassMatch = $checkPwd->isPassMatch($_POST['re_pass_signup']);
     if (!$isPassMatch) {
         $formErrors['re_pass_signup'] = "Password doesn't match";
     }
 
-    $host  = $_SERVER['HTTP_HOST'];
+    $host = $_SERVER['HTTP_HOST'];
 
     if (empty($formErrors)) {
-        $query = "INSERT INTO users (username, email, password) VALUES (?,?,?);";
+        $query =
+            'INSERT INTO users (username, email, password) VALUES (?,?,?);';
         $stmt = mysqli_stmt_init($db);
 
         if (!mysqli_stmt_prepare($stmt, $query)) {
@@ -75,13 +89,19 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
         } else {
             $hashed = password_hash($_POST['pass_signup'], PASSWORD_DEFAULT);
 
-            mysqli_stmt_bind_param($stmt, "sss", $_POST['username_signup'], $_POST["email_signup"], $hashed);
+            mysqli_stmt_bind_param(
+                $stmt,
+                'sss',
+                $_POST['username_signup'],
+                $_POST['email_signup'],
+                $hashed
+            );
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
             header("Location: http://$host/", true);
             exit();
         }
     } else {
-        require_once $_SERVER['DOCUMENT_ROOT'] . "/../src/routes/auth.php";
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/routes/auth.php';
     }
 }

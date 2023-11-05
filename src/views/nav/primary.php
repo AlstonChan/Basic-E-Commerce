@@ -1,174 +1,170 @@
 <?php
-$homepageLink = "/";
+$homepageLink = '/';
 $navItem = [
-    ["title" => "Home", "link" => $homepageLink],
-    ["title" => "About Us", "link" => $homepageLink . "about_us"],
-    ["title" => "All Products", "link" => $homepageLink . "all_product"]
+    ['title' => 'Home', 'link' => $homepageLink],
+    ['title' => 'About Us', 'link' => $homepageLink . 'about_us'],
+    ['title' => 'All Products', 'link' => $homepageLink . 'all_product'],
 ];
 
 $userItem = [
-    ["title" => "Account", "link" =>  $homepageLink . "account"],
-    ["title" => "Logout", "link" =>  $homepageLink . "auth?type=logout"]
+    ['title' => 'Account', 'link' => $homepageLink . 'account'],
+    ['title' => 'Logout', 'link' => $homepageLink . 'auth?type=logout'],
 ];
 
-require  $_SERVER['DOCUMENT_ROOT'] . "/../src/controllers/fetch/fetch_products.php";
+function loop_navItem($navItem, $page)
+{
+    $output = '';
 
+    foreach ($navItem as $value) {
+        $output .= '<li>';
+        $output .=
+            '<a href="' .
+            $value['link'] .
+            '" tabindex="0" class="' .
+            ($page === $value['title'] ? 'active' : '') .
+            '">';
+        $output .= $value['title'];
+        $output .= '</a>';
+        $output .= '</li>';
+    }
+
+    echo $output;
+}
+
+require $_SERVER['DOCUMENT_ROOT'] .
+    '/../src/controllers/fetch/fetch_products.php';
 ?>
 
-<nav class="container navbar mt-3 mb-3" role="navigation" aria-label="main navigation" x-data="{cart: false, user: false}">
-    <div class="is-flex mx-3 navbar-break-show" x-data="{open: false}">
-        <!-- navbar brand show only on small screen breakpoint -->
-        <div class="navbar-brand my-0 navbar-break-show">
-            <a href="<?php echo $homepageLink; ?>">
-                <img src="/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
-            </a>
+<nav class="navbar bg-base-100" aria-label="main navigation">
+    <!-- left  -->
+    <div class="navbar-start" x-data="{ 
+            open: false,
+            toggle() {
+                if (this.open) {
+                    return this.close()
+                }
+ 
+                this.$refs.button.focus()
+ 
+                this.open = true
+            },
+            close(focusAfter) {
+                if (! this.open) return
+ 
+                this.open = false
+ 
+                focusAfter && focusAfter.focus()
+            } }" 
+            x-on:keydown.escape.prevent.stop="close($refs.button)" 
+            x-on:focusin.window="! $refs.panel.contains($event.target) && close()" 
+            x-id="['dropdown-button']">
+        <div class="dropdown md:hidden">
+            <button 
+                class="btn btn-ghost btn-circle swap swap-rotate" 
+                x-ref="button" 
+                x-on:click="toggle()"
+                :aria-expanded="open" 
+                :aria-controls="$id('dropdown-button')" 
+                type="button"
+                :class="open && 'swap-active' "
+            >
+                <svg  xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 swap-on fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
+                </svg>
+                <i class="iconoir-menu text-xl swap-off fill-current"></i>
+            </button>
+            <ul 
+                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52" 
+                x-ref="panel" 
+                x-show="open" 
+                x-transition.origin.top.left x-on:click.outside="close($refs.button)" 
+                :id="$id('dropdown-button')" 
+            >
+                <?php loop_navItem($navItem, $page); ?>
+            </ul>
         </div>
-
-        <!-- cart dropdown  -->
-        <div :class="cart ? 'is-active' : ''" class="ml-auto dropdown is-right is-align-self-center">
-            <div class="dropdown-trigger">
-                <button x-on:click="cart = !cart; user = false; open = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
-                    <figure class="image">
-                        <img src="/public/assets/icon/cart.svg">
-                    </figure>
-                </button>
-            </div>
-            <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
-                <div class="dropdown-content">
-                    <div class="dropdown-item has-text-centered">
-                        Cart is Empty
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- user icon -->
-        <div :class="user ? 'is-active' : ''" class="dropdown is-right is-align-self-center">
-            <div class="dropdown-trigger">
-                <button x-on:click="user = !user; cart = false; open = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
-                    <figure class="image">
-                        <img src="/public/assets/icon/user.svg">
-                    </figure>
-                </button>
-            </div>
-            <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
-                <?php if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['user_id'])) : ?>
-                    <?php foreach ($userItem as $value) : ?>
-                        <a href="<?php echo $value["link"]; ?>" class="dropdown-item">
-                            <?php echo $value["title"]; ?>
-                        </a>
-                    <?php endforeach; ?>
-                <?php else : ?>
-                    <div class="dropdown-content">
-                        <a href="/auth?type=signup" class="dropdown-item has-text-centered has-background-primary has-text-primary-light pr-4">
-                            Sign up
-                        </a>
-                        <a href="/auth?type=login" class="dropdown-item has-text-centered pr-4">
-                            Log in
-                        </a>
-                    </div>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <!-- dropdown for small screen breakpoint -->
-        <div :class="open ? 'is-active' : ''" class="ml dropdown is-right defaultCard">
-
-            <!-- Hamburger -->
-            <a x-on:click="open = !open; cart = false; user = false" role="button" class="navbar-burger dropdown-trigger" aria-controls="dropdown-menu" aria-haspopup="true" aria-label="menu" aria-expanded="false" data-target="topNavBar">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-
-            <!-- dropdown content  -->
-            <div class="dropdown-menu" id="dropdown-menu" role="menu">
-                <div class="dropdown-content">
-                    <?php foreach ($navItem as $value) : ?>
-                        <a href="<?php echo $value["link"]; ?>" class="dropdown-item <?php if ($page === $value["title"]) echo "is-active" ?>">
-                            <?php echo $value["title"]; ?>
-                        </a>
-                    <?php endforeach; ?>
-                    <hr class="dropdown-divider">
-
-                    <?php foreach ($arrangedProductsCategory as $value) : ?>
-                        <a href="<?php echo "/products/{$value}"; ?>" class="dropdown-item <?php if ($page === $value) echo "is-active" ?>">
-                            <?php echo ucfirst($value); ?>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-
+        <ul class="menu menu-horizontal px-1 hidden md:inline-flex">
+            <?php loop_navItem($navItem, $page); ?>
+        </ul>
     </div>
 
-    <!-- main navbar on larger screen  -->
-    <div id="topNavBar" class="navbar-menu">
-        <!-- left  -->
-        <div class="navbar-start">
-            <?php foreach ($navItem as $value) : ?>
-                <a href="<?php echo $value["link"]; ?>" class="navbar-item <?php if ($page === $value["title"]) echo "is-active" ?>">
-                    <?php echo $value["title"]; ?>
-                </a>
-            <?php endforeach; ?>
-        </div>
+    <!-- middle brand  -->
+    <div class="navbar-center">
+        <a href="<?php echo $homepageLink; ?>">
+            <img src="/public/assets/logo.svg" width="168" height="42" class="logo-img pr-2">
+        </a>
+    </div>
 
-        <!-- middle brand  -->
-        <div class="navbar-brand mx-auto my-0">
-            <a href="<?php echo $homepageLink; ?>">
-                <img src="/public/assets/logo.svg" width="168" height="42" style="vertical-align:middle">
-            </a>
+    <!-- right  -->
+    <div class="navbar-end dropdown-end text-center">
+        <!-- cart -->
+        <div class="dropdown">
+            <label tabindex="0" class="btn btn-square btn-outline mr-2">
+                <i class="iconoir-cart text-xl"></i>
+            </label>
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
+                <li>Cart is empty</li>
+            </ul>
         </div>
-
-        <!-- right  -->
-        <div class="navbar-end">
-            <div class="navbar-item">
-                <div class="buttons">
-                    <div :class="cart ? 'is-active' : ''" class="dropdown">
-                        <div class="dropdown-trigger">
-                            <button x-on:click="cart = !cart; user = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="dropdown-menu2">
-                                <figure class="image">
-                                    <img src="/public/assets/icon/cart.svg">
-                                </figure>
-                            </button>
-                        </div>
-                        <div style="z-index:31" class="dropdown-menu" id="dropdown-menu2" role="menu">
-                            <div class="dropdown-content">
-                                <div class="dropdown-item has-text-centered">
-                                    Cart Empty
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <?php if (session_status() === PHP_SESSION_ACTIVE && isset($_SESSION['user_id'])) : ?>
-                        <div :class="user ? 'is-active' : ''" class="dropdown is-right">
-                            <div class="dropdown-trigger">
-                                <button x-on:click="user = !user; cart = false" style="border:none" class="button mr-2" aria-haspopup="true" aria-controls="user_big">
-                                    <figure class="image">
-                                        <img src="/public/assets/icon/user.svg">
-                                    </figure>
-                                </button>
-                            </div>
-                            <div style="z-index:31" class="dropdown-menu" id="user_big" role="menu">
-                                <div class="dropdown-content">
-                                    <?php foreach ($userItem as $value) : ?>
-                                        <a href="<?php echo $value["link"]; ?>" class="dropdown-item">
-                                            <?php echo $value["title"]; ?>
-                                        </a>
-                                    <?php endforeach; ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php else : ?>
-                        <a href="/auth?type=signup" class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a href="/auth?type=login" class="button is-light">
-                            Log in
-                        </a>
-                    <?php endif; ?>
+        <!-- account logins/signup/details  -->
+        <div class="dropdown dropdown-end md:hidden">
+            <label tabindex="0" class="btn btn-ghost btn-circle">
+                <i class="iconoir-user text-3xl"></i>
+            </label>
+            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
+                <?php if (
+                    session_status() === PHP_SESSION_ACTIVE &&
+                    isset($_SESSION['user_id'])
+                ): ?>
+                    <?php foreach ($userItem as $value): ?>
+                        <li>
+                            <a href="<?php echo $value[
+                                'link'
+                            ]; ?>" class="dropdown-item">
+                                <?php echo $value['title']; ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li>
+                        <a href="/auth?type=signup">Sign up</a>
+                    </li>
+                    <li>
+                        <a href="/auth?type=login">Log in</a>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+        <div class="hidden md:block">
+            <?php if (
+                session_status() === PHP_SESSION_ACTIVE &&
+                isset($_SESSION['user_id'])
+            ): ?>
+                <div class="dropdown dropdown-end">
+                    <label tabindex="0" class="btn btn-ghost btn-circle">
+                        <i class="iconoir-user text-3xl"></i>
+                    </label>
+                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
+                        <?php foreach ($userItem as $value): ?>
+                            <li>
+                                <a href="<?php echo $value[
+                                    'link'
+                                ]; ?>" class="dropdown-item">
+                                    <?php echo $value['title']; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
-            </div>
+            <?php else: ?>
+                <a href="/auth?type=signup" class="btn btn-primary mr-2">
+                    <strong>Sign up</strong>
+                </a>
+                <a href="/auth?type=login" class="btn btn-outline btn-primary mr-2">
+                    Log in
+                </a>
+            <?php endif; ?>
         </div>
+
     </div>
 </nav>

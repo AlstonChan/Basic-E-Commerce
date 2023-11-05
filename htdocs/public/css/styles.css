@@ -18,6 +18,18 @@
   background-color: #fff;
 }
 
+.logo-img {
+  max-width: 168px;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 500px) {
+  .logo-img {
+    max-width: 120px;
+  }
+}
+
 /* secondary.php  */
 @media screen and (max-width: 1024px) {
   .remain-navbar {

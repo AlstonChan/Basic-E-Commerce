@@ -10,7 +10,9 @@
     "url": "https://www.chanalston.com"
   },
   "scripts": {
-    "tailwind": "npx tailwindcss -i ./htdocs/public/css/styles.css -o ./htdocs/public/dist/output.css --watch"
+    "css:dev": "npx tailwindcss -i ./htdocs/public/css/styles.css -o ./htdocs/public/dist/output.css --watch",
+    "css:prod": "npx tailwindcss -i ./htdocs/public/css/styles.css -o ./htdocs/public/dist/output.css -m",
+    "format": "prettier --config ./.prettierrc -w -- ./**/*.php"
   },
   "repository": {
     "type": "git",
@@ -19,7 +21,12 @@
   "keywords": [],
   "license": "GPL-3.0 license",
   "devDependencies": {
+    "@prettier/plugin-php": "^0.21.0",
     "daisyui": "^3.9.4",
+    "prettier": "^3.0.3",
     "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "iconoir": "^7.0.0"
   }
 }

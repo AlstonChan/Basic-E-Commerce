@@ -1,10 +1,9 @@
 <?php
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/public/assets/testimonials.json";
+$file = $_SERVER['DOCUMENT_ROOT'] . '/public/assets/testimonials.json';
 $data = json_decode(file_get_contents($file), true);
 
 $data = array_chunk($data, 3);
-
 ?>
 
 
@@ -17,18 +16,18 @@ $data = array_chunk($data, 3);
     </p>
     <div class="tile is-ancestor wide-widescreen columnsAbout">
         <div class="tile is-parent is-vertical ">
-            <?php foreach ($data[0] as $value) : ?>
-                <?php require __DIR__ . "/testimonialCard.php"; ?>
+            <?php foreach ($data[0] as $value): ?>
+                <?php require __DIR__ . '/testimonialCard.php'; ?>
             <?php endforeach; ?>
         </div>
         <div class="tile is-parent is-vertical">
-            <?php foreach ($data[1] as $value) : ?>
-                <?php require __DIR__ . "/testimonialCard.php" ?>
+            <?php foreach ($data[1] as $value): ?>
+                <?php require __DIR__ . '/testimonialCard.php'; ?>
             <?php endforeach; ?>
         </div>
         <div class="tile is-parent is-vertical">
-            <?php foreach ($data[2] as $value) : ?>
-                <?php require __DIR__ . "/testimonialCard.php" ?>
+            <?php foreach ($data[2] as $value): ?>
+                <?php require __DIR__ . '/testimonialCard.php'; ?>
             <?php endforeach; ?>
         </div>
     </div>

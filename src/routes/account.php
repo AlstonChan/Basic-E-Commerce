@@ -1,9 +1,11 @@
-<?php $page = "Account" ?>
-<?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php" ?>
+<?php $page = 'Account'; ?>
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/head.php'; ?>
 
 <body>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/primary.php" ?>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/secondary.php" ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] .
+        '/../src/views/nav/primary.php'; ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] .
+        '/../src/views/nav/secondary.php'; ?>
 
     <article class="section wide-widescreen">
         <p class="title is-2 has-text-centered has-text-weight-bold">
@@ -17,16 +19,22 @@
 
                 <hr class="dropdown-divider">
 
-                <span class="is-size-5"> User ID:</span> <span class='has-text-weight-bold'><?php echo $_SESSION["user_id"] ?></span>
+                <span class="is-size-5"> User ID:</span> <span class='has-text-weight-bold'><?php echo $_SESSION[
+                    'user_id'
+                ]; ?></span>
                 <br>
-                <span class="is-size-5"> Username:</span> <span class='has-text-weight-bold'><?php echo $_SESSION["username"] ?></span>
+                <span class="is-size-5"> Username:</span> <span class='has-text-weight-bold'><?php echo $_SESSION[
+                    'username'
+                ]; ?></span>
                 <br>
-                <span class="is-size-5"> Email:</span> <span class='has-text-weight-bold'><?php echo $_SESSION["email"] ?></span>
+                <span class="is-size-5"> Email:</span> <span class='has-text-weight-bold'><?php echo $_SESSION[
+                    'email'
+                ]; ?></span>
             </div>
         </div>
 
     </article>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/footer.php" ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/footer.php'; ?>
 </body>
 
 </html>

@@ -19,36 +19,28 @@ $topProducts = array_slice($topProducts, 0, 7);
             <div class="tile is-parent is-vertical">
 
                 <?php
-
                 $order = 0;
-                require "featureCard.php";
-
+                require 'featureCard.php';
                 ?>
 
 
                 <?php
-
                 $order = 1;
-                require "featureCard.php";
-
+                require 'featureCard.php';
                 ?>
 
             </div>
             <div class="tile is-parent is-vertical">
 
                 <?php
-
                 $order = 4;
-                require "featureCard.php";
-
+                require 'featureCard.php';
                 ?>
 
 
                 <?php
-
                 $order = 6;
-                require "featureCard.php";
-
+                require 'featureCard.php';
                 ?>
 
             </div>

@@ -1,10 +1,10 @@
 <?php
 
-$file = $_SERVER['DOCUMENT_ROOT'] . "/public/assets/social-media/social_media.json";
+$file =
+    $_SERVER['DOCUMENT_ROOT'] . '/public/assets/social-media/social_media.json';
 $rawData = json_decode(file_get_contents($file), true);
 
-$data = $rawData["social-media"];
-
+$data = $rawData['social-media'];
 ?>
 
 <footer class="footer">
@@ -41,13 +41,15 @@ $data = $rawData["social-media"];
                 <ul>
                     <li class="title is-size-6 is-uppercase has-text-weight-bold">FOLLOW US</li>
 
-                    <?php foreach ($data as $company) : ?>
+                    <?php foreach ($data as $company): ?>
                         <li class="is-flex">
                             <figure class="image is-48x48">
-                                <img src="<?php echo $company['thumbnails'] ?>">
+                                <img src="<?php echo $company[
+                                    'thumbnails'
+                                ]; ?>">
                             </figure>
                             <p class="ml-2 is-align-self-center is-capitalized has-text-weight-semibold" style="height:100%">
-                                <a><?php echo $company['name'] ?></a>
+                                <a><?php echo $company['name']; ?></a>
                             </p>
                         </li>
                     <?php endforeach; ?>

@@ -2,15 +2,19 @@
     <div class="media media-mobile-small-breakpoint">
         <figure class="media-left">
             <p class="image is-64x64">
-                <img src="<?php echo $value["avatar"] ?>">
+                <img src="<?php echo $value['avatar']; ?>">
             </p>
         </figure>
         <div class="media-content">
             <div class="content">
                 <p>
-                    <strong><?php echo $value["name"] ?></strong> <small><?php echo $value["designation"] ?></small>
+                    <strong><?php echo $value[
+                        'name'
+                    ]; ?></strong> <small><?php echo $value[
+    'designation'
+]; ?></small>
                     <br>
-                    <?php echo $value["message"] ?>
+                    <?php echo $value['message']; ?>
                 </p>
             </div>
         </div>
