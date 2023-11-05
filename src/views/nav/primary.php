@@ -11,7 +11,7 @@ $userItem = [
     ['title' => 'Logout', 'link' => $homepageLink . 'auth?type=logout'],
 ];
 
-function loop_navItem($navItem, $page)
+function loop_navItem($navItem, $page, $is_dropdown)
 {
     $output = '';
 
@@ -24,6 +24,22 @@ function loop_navItem($navItem, $page)
             ($page === $value['title'] ? 'active' : '') .
             '">';
         $output .= $value['title'];
+        if ($is_dropdown && $value['title'] === 'All Products') {
+            $output .= '<ul>';
+            global $arrangedProductsCategory;
+            foreach ($arrangedProductsCategory as $product) {
+                $output .=
+                    '<li>' .
+                    '<a href="' .
+                    "/products/{$product}" .
+                    '" class="' .
+                    ($page === $product && 'active') .
+                    '">' .
+                    ucfirst($product) .
+                    '</a></li>';
+            }
+            $output .= '</ul>';
+        }
         $output .= '</a>';
         $output .= '</li>';
     }
@@ -75,16 +91,17 @@ require $_SERVER['DOCUMENT_ROOT'] .
             </button>
             <ul 
                 class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52" 
+                :class="open && '!visible !scale-100 !opacity-100' "
                 x-ref="panel" 
                 x-show="open" 
                 x-transition.origin.top.left x-on:click.outside="close($refs.button)" 
                 :id="$id('dropdown-button')" 
             >
-                <?php loop_navItem($navItem, $page); ?>
+                <?php loop_navItem($navItem, $page, true); ?>
             </ul>
         </div>
         <ul class="menu menu-horizontal px-1 hidden md:inline-flex">
-            <?php loop_navItem($navItem, $page); ?>
+            <?php loop_navItem($navItem, $page, false); ?>
         </ul>
     </div>
 

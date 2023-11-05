@@ -1,16 +1,17 @@
 <!-- $arrangedProductsCategory from primary.php  -->
-<nav class="navbar is-primary navbar-break-hidden-collapse" role="navigation" aria-label="main navigation" style="z-index:0">
-    <div id="productsCategory" class="navbar-menu">
-        <div class="navbar-start mx-auto">
+<nav class="navbar bg-base-300 justify-center my-2 hidden md:flex" role="navigation" aria-label="main navigation" style="z-index:0">
+    <div id="productsCategory" class="navbar-center">
+        <ul class="menu menu-horizontal">
             <?php foreach ($arrangedProductsCategory as $value): ?>
-                <a href="<?php echo "/products/{$value}"; ?>" class="navbar-item <?php if (
-    $page === $value
-) {
-    echo 'is-active';
-} ?>">
-                    <?php echo ucfirst($value); ?>
-                </a>
+                <li>
+                    <a href="<?php echo "/products/{$value}"; ?>" class="
+                    <?php if ($page === $value) {
+                        echo 'active';
+                    } ?>">
+                        <?php echo ucfirst($value); ?>
+                    </a>
+                </li>
             <?php endforeach; ?>
-        </div>
+        </ul>
     </div>
 </nav>
