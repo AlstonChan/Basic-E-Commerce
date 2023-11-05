@@ -20,7 +20,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/controllers/session.php'; ?>
 
     <!-- Stylesheet  -->
     <link rel="stylesheet" href="/public/dist/output.css">
-    <!-- <link rel="stylesheet" href="/public/css/bulma.css"> -->
     <link rel="stylesheet" href="/iconoir/iconoir-regular.css">
     <link rel="stylesheet" href="/iconoir/iconoir-solid.css">
     <link rel="stylesheet" href="/iconoir/iconoir.css">
