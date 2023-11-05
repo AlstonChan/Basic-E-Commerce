@@ -15,6 +15,7 @@ services:
     volumes:
       - ./:/var/www/default 
       - ./config/php.ini:/etc/php-custom.d/php.ini
+      - ./config/httpd.conf:/etc/httpd-custom.d/localhost.conf
     env_file:
       - .env.apache
     extra_hosts:
