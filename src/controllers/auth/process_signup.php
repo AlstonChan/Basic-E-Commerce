@@ -64,7 +64,7 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
     $checkPwd = new CheckPassword(
         password: $_POST['pass_signup'],
         mixedCase: true,
-        minNums: 1
+        minNums: 1,
     );
     $passErrors = $checkPwd->validatePass()->getErrors();
     if (!empty($passErrors)) {
@@ -94,7 +94,7 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
                 'sss',
                 $_POST['username_signup'],
                 $_POST['email_signup'],
-                $hashed
+                $hashed,
             );
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);

@@ -1,31 +1,20 @@
-<section class="hero is-medium is-black">
-    <div class="hero-body mx-auto" style="min-width:800px">
+<section class="hero min-h-[400px] md:min-h-[500px] lg:min-h-[600px] bg-base-200 bg-cover xl:bg-contain bg-[75%] xl:bg-center">
+    <div class="hero-content lg:flex-row-reverse mr-16 md:mr-48 lg:mr-32">
         <div class="mr-6 is-justify-content-center">
-            <p class="title is-size-2-desktop">
-                iPhone X
+            <h1 class="text-4xl md:text-6xl font-bold"> iPhone X</h1>
+            <p class="text-xl md:text-xl"> New and Beyond.</p>
+            <div class="flex items-center mt-2">
+                <i class="iconoir-cpu text-4xl"></i>
+                <p class="text-sm md:text-base pl-1">
+                    Quad core high performace CPU
+                </p>
+            </div>
+            <p class="text-2xl md:text-4xl uppercase my-4">
+                Get best deals <br /> now at <span class="font-bold">SHOP</span>.
             </p>
-            <p class="subtitle">
-                New and Beyond.
-            </p>
-            <article class="media">
-                <div class="media-left">
-                    <figure class="image is-32x32 mb-4">
-                        <img src="/public/assets/icon/cpu.svg" alt="cpu" width="32" height="32">
-                    </figure>
-                </div>
-                <div class="content pt-1">
-                    <div class="content">
-                        <p class="title is-5 is-size-6-mobile">
-                            Quad core high performace CPU
-                        </p>
-                    </div>
-            </article>
-            <p class="title is-uppercase is-size-2-desktop is-size-3-tablet is-size-4-mobile">
-                Get best deals <br /> now at SHOP.
-            </p>
-            <div class="buttons">
-                <button class="button has-text-weight-bold is-primary">BUY NOW</button>
-                <button class="button has-text-weight-bold is-link">Info</button>
+            <div class="join">
+                <button class="btn join-item btn-accent">BUY NOW</button>
+                <button class="btn join-item btn-info btn-outline">Info</button>
             </div>
         </div>
     </div>

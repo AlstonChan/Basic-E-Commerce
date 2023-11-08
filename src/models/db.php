@@ -9,7 +9,7 @@ $mysqli = new mysqli(
     hostname: $host,
     username: $username,
     password: $password,
-    database: $dbname
+    database: $dbname,
 );
 
 if (!$mysqli) {

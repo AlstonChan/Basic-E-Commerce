@@ -52,7 +52,7 @@ class Router
     public function routeHandler(
         string $method,
         string $path,
-        callable $callback
+        callable $callback,
     ): void {
         $this->routes[$method . $path] = [
             'path' => $path,

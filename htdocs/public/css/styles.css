@@ -3,19 +3,26 @@
 @tailwind utilities;
 
 .hero {
+  position: relative;
+
   background-image: url(/public/assets/hero_phone_sml.jpg);
-  background-position: center;
-  background-size: contain;
+  background-position: 75%;
   background-repeat: no-repeat;
+  background-color: #0a0a0a;
 }
 
 .hero::after {
   content: "";
+
+  position: absolute;
+  bottom: -71px;
+
   min-width: 3500px;
   height: 100px;
   background-repeat: repeat-x;
   background-image: url(/public/assets/wave.svg);
-  background-color: #fff;
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+  overflow: hidden;
 }
 
 .logo-img {

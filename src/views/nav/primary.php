@@ -51,7 +51,7 @@ require $_SERVER['DOCUMENT_ROOT'] .
     '/../src/controllers/fetch/fetch_products.php';
 ?>
 
-<nav class="navbar bg-base-100" aria-label="main navigation">
+<nav class="navbar bg-base-100 max-w-screen-2xl mx-auto" aria-label="main navigation">
     <!-- left  -->
     <div class="navbar-start" x-data="{ 
             open: false,

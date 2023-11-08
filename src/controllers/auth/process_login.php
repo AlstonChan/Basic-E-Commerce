@@ -39,7 +39,7 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'login') {
     if (empty($formErrors)) {
         $sql = sprintf(
             "SELECT * FROM users WHERE email = '%s'",
-            mysqli_real_escape_string($db, $_POST['email_login'])
+            mysqli_real_escape_string($db, $_POST['email_login']),
         );
         $result = mysqli_query($db, $sql);
 

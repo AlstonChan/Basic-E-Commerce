@@ -1,5 +1,5 @@
 <!-- $arrangedProductsCategory from primary.php  -->
-<nav class="navbar bg-base-300 justify-center my-2 hidden md:flex" role="navigation" aria-label="main navigation" style="z-index:0">
+<nav class="navbar bg-base-300 justify-center mt-2 hidden md:flex" role="navigation" aria-label="main navigation" style="z-index:0">
     <div id="productsCategory" class="navbar-center">
         <ul class="menu menu-horizontal">
             <?php foreach ($arrangedProductsCategory as $value): ?>

@@ -12,7 +12,7 @@ class CheckPassword
         protected ?int $minChars = null,
         protected bool $mixedCase = false,
         protected int $minNums = 0,
-        protected int $minSymbols = 0
+        protected int $minSymbols = 0,
     ) {
         if (!isset($this->minChars) || $this->minChars < self::MIN_LENGTH) {
             $this->minChars = self::MIN_LENGTH;

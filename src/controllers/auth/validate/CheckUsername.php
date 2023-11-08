@@ -11,7 +11,7 @@ class CheckUsername
     public function __construct(
         protected string $username,
         protected ?int $minChars = null,
-        protected ?int $maxChars = null
+        protected ?int $maxChars = null,
     ) {
         if (!isset($this->minChars) || $this->minChars < self::MIN_LENGTH) {
             $this->minChars = self::MIN_LENGTH;
