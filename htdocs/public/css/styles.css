@@ -35,6 +35,12 @@
   height: auto;
 }
 
+@media screen and (max-width: 640px) {
+  .card-small {
+    @apply card-compact;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .logo-img {
     max-width: 120px;
