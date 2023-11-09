@@ -14,29 +14,26 @@ $deliveryRawData = json_decode(file_get_contents($file), true);
 $deliveryData = $deliveryRawData['delivery'];
 ?>
 
-<section class="section">
-    <div class="columns">
-        <div class="column">
-            <p class="title is-size-6 is-uppercase has-text-weight-bold">PAYMENT METHOD</p>
-            <div class="sml-tag" style="max-width:400px">
-                <?php foreach ($paymentData as $method): ?>
-                    <div class="box p-0 mr-3" style="max-width:90px">
-                        <figure class="image is-5by3">
-                            <img src="<?php echo $method['thumbnails']; ?>">
-                        </figure>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+<section class="my-10 max-w-7xl mx-auto flex px-5 flex-col lg:flex-row">
+    <div class="flex-1">
+        <p class="text-lg md:text-xl mb-3">PAYMENT METHOD</p>
+        <div class="grid grid-rows-3 grid-cols-4 gap-2 max-w-sm">
+            <?php foreach ($paymentData as $method): ?>
+                <img src="<?php echo $method[
+                    'thumbnails'
+                ]; ?>" class="p-0 max-w-[90px] aspect-video w-full h-auto">
+            <?php endforeach; ?>
         </div>
-        <div class="column">
-            <p class="title is-size-6 is-uppercase has-text-weight-bold">DELIVERY SERVIVCES</p>
-            <div class="sml-tag" style="max-width:400px">
-                <?php foreach ($deliveryData as $company): ?>
-                    <figure class="image mr-3 mb-3">
-                        <img src="<?php echo $company['thumbnails']; ?>">
-                    </figure>
-                <?php endforeach; ?>
-            </div>
+    </div>
+    <div class="flex-1 mt-5 lg:mt-0">
+        <p class="text-lg md:text-xl mb-3">DELIVERY SERVIVCES</p>
+        <div class="grid grid-rows-3 grid-cols-4 gap-2 max-w-sm">
+            <?php foreach ($deliveryData as $company): ?>
+                <img 
+                    src="<?php echo $company['thumbnails']; ?>" 
+                    class="p-0 max-w-[90px] aspect-video w-full h-auto object-contain rounded-md bg-white px-1"
+                >
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
