@@ -7,13 +7,10 @@
     <?php require $_SERVER['DOCUMENT_ROOT'] .
         '/../src/views/nav/secondary.php'; ?>
 
-    <article class="section has-text-centered wide-widescreen">
-        <p class="title is-2 has-text-weight-bold">
+    <section class="mt-8">
+        <h1 class="text-2xl md:text-4xl font-bold text-center mb-10">
             All Products
-        </p>
-        <p class="subtitle is-4">
-            We only sell the best products
-        </p>
+        </h1>
 
         <?php for (
             $index = 0;
@@ -24,7 +21,7 @@
                 '/../src/views/all_products/product_section.php';
         } ?>
 
-    </article>
+    </section>
     <?php require $_SERVER['DOCUMENT_ROOT'] .
         '/../src/views/home/services.php'; ?>
     <?php require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/footer.php'; ?>

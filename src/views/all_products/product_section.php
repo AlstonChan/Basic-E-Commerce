@@ -1,39 +1,43 @@
-<section class="section has-text-left">
-    <h1 class="title is-capitalized"><?php echo $arrangedProductsCategory[
-        $index
-    ]; ?> </h1>
-    <div class="container wide-widescreen">
-        <div class="grid-product">
-            <?php foreach ($productsData['products'] as $value): ?>
-                <?php if (
-                    $value['category'] === $arrangedProductsCategory[$index]
-                ): ?>
-                    <a href="/products?id=<?php echo $value['id']; ?>">
-                        <div class="column homeCard" style="cursor:pointer;">
-                            <div class="card">
-                                <div class="card-image">
-                                    <figure style="height: 200px" class="image">
-                                        <img style="height: 100%; object-fit:cover" src=" <?php echo $value[
-                                            'thumbnail'
-                                        ]; ?>" style="border-radius:4px">
-                                    </figure>
-                                </div>
-                                <div class="card-content px-3 py-2 is-capitalized">
-                                    <p class="title is-size-4 mt-2 mb-5">
-                                        <?php echo $value['title']; ?>
-                                    </p>
-                                    <p class="subtitle is-size-6">
-                                        <?php echo $value['brand']; ?>
-                                    </p>
-                                    <p class="subtitle is-size-6 has-text-weight-bold">
-                                        USD <?php echo $value['price']; ?>
-                                    </p>
-                                </div>
+<section class="px-6 max-w-7xl mx-auto mt-8">
+    <h2 class="text-lg md:text-2xl font-bold mb-3 capitalize">
+        <?php echo $arrangedProductsCategory[$index]; ?> 
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <?php foreach ($productsData['products'] as $value): ?>
+            <?php if (
+                $value['category'] === $arrangedProductsCategory[$index]
+            ): ?>
+                <div class="join join-vertical w-fit odd:justify-self-end shadow-xl hover:scale-105 ease-in-out duration-150">
+                    <a 
+                        class="card card-compact bg-base-300 w-fit rounded-b-none h-full"
+                        href="/products?id=<?php echo $value['id']; ?>"
+                    >
+                        <figure>
+                            <img 
+                                src="<?php echo $value['thumbnail']; ?>" 
+                                alt="<?php echo $value['title']; ?>" 
+                                class="aspect-video object-cover"
+                            />
+                        </figure>
+                        <div class="card-body">
+                            <h2 class="card-title inline-block flex-grow capitalize">
+                                <?php echo $value['title']; ?>
+                            </h2>
+                            <div class="badge badge-accent">
+                                 <?php echo $value['brand']; ?>
                             </div>
+                            <p class="text-lg text-info mt-auto w-fit h-fit flex-grow-0">
+                               <strong>
+                                 $ <?php echo $value['price']; ?>
+                               </strong>
+                            </p>
                         </div>
                     </a>
-                <?php endif; ?>
-            <?php endforeach; ?>
-        </div>
+                    <a class="btn btn-primary w-full rounded-t-none">
+                        Add to Cart
+                    </a>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 </section>
