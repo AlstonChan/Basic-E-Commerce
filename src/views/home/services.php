@@ -15,29 +15,27 @@ $deliveryData = $deliveryRawData['delivery'];
 ?>
 
 <section class="section">
-    <div class="container">
-        <div class="columns">
-            <div class="column">
-                <p class="title is-size-6 is-uppercase has-text-weight-bold">PAYMENT METHOD</p>
-                <div class="sml-tag" style="max-width:400px">
-                    <?php foreach ($paymentData as $method): ?>
-                        <div class="box p-0 mr-3" style="max-width:90px">
-                            <figure class="image is-5by3">
-                                <img src="<?php echo $method['thumbnails']; ?>">
-                            </figure>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <div class="column">
-                <p class="title is-size-6 is-uppercase has-text-weight-bold">DELIVERY SERVIVCES</p>
-                <div class="sml-tag" style="max-width:400px">
-                    <?php foreach ($deliveryData as $company): ?>
-                        <figure class="image mr-3 mb-3">
-                            <img src="<?php echo $company['thumbnails']; ?>">
+    <div class="columns">
+        <div class="column">
+            <p class="title is-size-6 is-uppercase has-text-weight-bold">PAYMENT METHOD</p>
+            <div class="sml-tag" style="max-width:400px">
+                <?php foreach ($paymentData as $method): ?>
+                    <div class="box p-0 mr-3" style="max-width:90px">
+                        <figure class="image is-5by3">
+                            <img src="<?php echo $method['thumbnails']; ?>">
                         </figure>
-                    <?php endforeach; ?>
-                </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="column">
+            <p class="title is-size-6 is-uppercase has-text-weight-bold">DELIVERY SERVIVCES</p>
+            <div class="sml-tag" style="max-width:400px">
+                <?php foreach ($deliveryData as $company): ?>
+                    <figure class="image mr-3 mb-3">
+                        <img src="<?php echo $company['thumbnails']; ?>">
+                    </figure>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

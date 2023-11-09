@@ -1,4 +1,4 @@
-<section class="hero min-h-[400px] md:min-h-[500px] lg:min-h-[600px] bg-base-200 bg-cover xl:bg-contain bg-[75%] xl:bg-center mb-[71px]">
+<section class="hero min-h-[400px] md:min-h-[500px] lg:min-h-[600px] bg-base-200 bg-cover xl:bg-contain bg-[75%] xl:bg-center mb-20">
     <div class="hero-content lg:flex-row-reverse mr-16 md:mr-48 lg:mr-32">
         <div class="mr-6 is-justify-content-center">
             <h1 class="text-4xl md:text-6xl font-bold"> iPhone X</h1>

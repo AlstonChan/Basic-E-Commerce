@@ -10,7 +10,7 @@ foreach ($productsData['products'] as $key => $value) {
 $topProducts = array_slice($topProducts, 0, 7);
 ?>
 
-<section class="section mb-10">
+<section class="mb-32">
     <h2 class="text-2xl md:text-4xl font-bold text-center mb-10">
         Our Top Products
     </h2>

@@ -1,5 +1,5 @@
 <div class="join join-vertical w-fit odd:justify-self-end shadow-xl">
-    <article class="card card-compact max-w-96 bg-base-300 rounded-b-none h-full">
+    <article class="card card-small max-w-96 bg-base-300 rounded-b-none h-full">
         <figure>
             <img 
                 src="<?php echo $topProducts[$order]['thumbnail']; ?>"
@@ -24,15 +24,6 @@
                     <?php echo $topProducts[$order]['category']; ?>
                 </div> 
             </div>
-            <!-- <div class="buttons is-justify-content-center mt-3">
-                <button class="btn btn-primary">
-                    <a href="/products?id=<?php echo $topProducts[$order][
-                        'id'
-                    ]; ?>" style="text-decoration:none">
-                        Add to Cart
-                    </a>
-                </button>
-            </div> -->
         </div>
     </article>
     <a class="btn btn-primary w-full rounded-t-none" href="/products?id=<?php echo $topProducts[
