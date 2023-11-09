@@ -24,23 +24,22 @@ function loop_navItem($navItem, $page, $is_dropdown)
             ($page === $value['title'] ? 'active' : '') .
             '">';
         $output .= $value['title'];
+        $output .= '</a>';
         if ($is_dropdown && $value['title'] === 'All Products') {
             $output .= '<ul>';
             global $arrangedProductsCategory;
             foreach ($arrangedProductsCategory as $product) {
+                $output .= '<li>';
+                $output .= '<a href="';
+                $output .= "/products/{$product}";
                 $output .=
-                    '<li>' .
-                    '<a href="' .
-                    "/products/{$product}" .
-                    '" class="' .
-                    ($page === $product && 'active') .
-                    '">' .
-                    ucfirst($product) .
-                    '</a></li>';
+                    '" class="' . ($page === $product ? 'active' : '') . '">';
+                $output .= ucfirst($product);
+                $output .= '</a>';
+                $output .= '</li>';
             }
             $output .= '</ul>';
         }
-        $output .= '</a>';
         $output .= '</li>';
     }
 
