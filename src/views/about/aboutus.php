@@ -8,7 +8,7 @@ $spotlight = [
     ['title' => '24/7 Customer Service', 'icon' => 'multi-bubble'],
 ]; ?>
 
-<section class="mb-32">
+<section class="mb-32 mt-8">
     <h2 class="text-2xl md:text-4xl font-bold text-center mb-10">
         Why 
         <span class="underline decoration-4 decoration-sky-800 text-sky-800">SHOP</span>
