@@ -1,7 +1,7 @@
 <?php
 
-$currentCatogory = explode('/', $params['url'])[1];
-$page = $currentCatogory;
+$currentCategory = explode('/', $params['url'])[1];
+$page = $currentCategory;
 ?>
 <?php require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/head.php'; ?>
 
@@ -10,13 +10,16 @@ $page = $currentCatogory;
         '/../src/views/nav/primary.php'; ?>
     <?php require $_SERVER['DOCUMENT_ROOT'] .
         '/../src/views/nav/secondary.php'; ?>
-    <article class="section has-text-centered wide-widescreen">
-        <p class="title is-2 has-text-weight-bold">
-            <?php echo ucfirst($currentCatogory); ?>
-        </p>
+    <section class="mt-8">
+        <h1 class="text-2xl md:text-4xl font-bold text-center mb-10">
+            <?php echo ucfirst($currentCategory); ?>
+        </h1>
 
-        <?php include $_SERVER['DOCUMENT_ROOT'] .
-            '/../src/views/products/product.php'; ?>
+        <?php
+        $page_type = 'category';
+        include $_SERVER['DOCUMENT_ROOT'] .
+            '/../src/views/products/product.php';
+        ?>
 
     </article>
 

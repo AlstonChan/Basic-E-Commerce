@@ -17,8 +17,9 @@
             $index < count($arrangedProductsCategory);
             $index++
         ) {
+            $page_type = 'all';
             include $_SERVER['DOCUMENT_ROOT'] .
-                '/../src/views/all_products/product_section.php';
+                '/../src/views/products/product.php';
         } ?>
 
     </section>

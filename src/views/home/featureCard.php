@@ -20,10 +20,10 @@
                 }
                 ?>
             </h3>
-            <p class="">
+            <p>
                 <?php echo $topProducts[$order]['description']; ?>
             </p>
-            <div class="card-actions ">
+            <div class="card-actions">
                 <div class="badge badge-outline">
                     <?php echo $topProducts[$order]['category']; ?>
                 </div> 
