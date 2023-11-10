@@ -10,7 +10,7 @@ spl_autoload_register(function ($class) {
 
 use Src\Controllers\Auth\Validate\CheckPassword;
 
-if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'login') {
+if (isset($_POST['auth_type']) && 'login' === $_POST['auth_type']) {
     $db = require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/models/db.php';
 
     $formErrors = [];
@@ -19,8 +19,8 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'login') {
     echo empty($_POST['email_login']);
     // email
     if (
-        !filter_var($_POST['email_login'], FILTER_VALIDATE_EMAIL) ||
-        empty($_POST['email_login'])
+        !filter_var($_POST['email_login'], FILTER_VALIDATE_EMAIL)
+        || empty($_POST['email_login'])
     ) {
         $formErrors['email_login'] = 'Valid email is required';
     } else {
@@ -56,7 +56,7 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'login') {
                 $_SESSION['email'] = $user['email'];
 
                 header("Location: http://$host/", true);
-                exit();
+                exit;
             } else {
                 $formErrors['pass_login'] = 'Your password is incorrect!';
                 require_once $_SERVER['DOCUMENT_ROOT'] .

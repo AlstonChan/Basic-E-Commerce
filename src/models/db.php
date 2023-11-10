@@ -13,7 +13,7 @@ $mysqli = new mysqli(
 );
 
 if (!$mysqli) {
-    die('Connection error: ' . $mysqli_connect_error());
+    exit('Connection error: ' . $mysqli_connect_error());
 }
 
 return $mysqli;

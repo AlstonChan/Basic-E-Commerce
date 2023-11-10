@@ -11,7 +11,7 @@ spl_autoload_register(function ($class) {
 use Src\Controllers\Auth\Validate\CheckPassword;
 use Src\Controllers\Auth\Validate\CheckUsername;
 
-if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
+if (isset($_POST['auth_type']) && 'signup' === $_POST['auth_type']) {
     $db = require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/models/db.php';
 
     $formErrors = [];
@@ -85,7 +85,7 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
         $stmt = mysqli_stmt_init($db);
 
         if (!mysqli_stmt_prepare($stmt, $query)) {
-            die('An error occured');
+            exit('An error occured');
         } else {
             $hashed = password_hash($_POST['pass_signup'], PASSWORD_DEFAULT);
 
@@ -99,7 +99,7 @@ if (isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup') {
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
             header("Location: http://$host/", true);
-            exit();
+            exit;
         }
     } else {
         require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/routes/auth.php';

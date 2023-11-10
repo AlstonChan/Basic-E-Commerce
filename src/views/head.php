@@ -9,12 +9,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/controllers/session.php'; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic E-Commerce<?php if (isset($page)) {
-        echo ' | ' . $page;
-    } ?></title>
+    <title>
+        Basic E-Commerce
+        <?php if (isset($page)) {
+            echo ' | ' . $page;
+        } ?>
+    </title>
     <meta name="title" content="Basic E-Commerce<?php if (isset($page)) {
-        echo ' | ' . $page;
-    } ?>" />
+                                                    echo ' | ' . $page;
+                                                } ?>" />
 
     <link rel="icon" href="/public/assets/favicon.ico">
 

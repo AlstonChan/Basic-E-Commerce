@@ -25,7 +25,7 @@ function loop_navItem($navItem, $page, $is_dropdown)
             '">';
         $output .= $value['title'];
         $output .= '</a>';
-        if ($is_dropdown && $value['title'] === 'All Products') {
+        if ($is_dropdown && 'All Products' === $value['title']) {
             $output .= '<ul>';
             global $arrangedProductsCategory;
             foreach ($arrangedProductsCategory as $product) {
@@ -52,7 +52,8 @@ require $_SERVER['DOCUMENT_ROOT'] .
 
 <nav class="navbar bg-base-100 max-w-screen-2xl mx-auto" aria-label="main navigation">
     <!-- left  -->
-    <div class="navbar-start" x-data="{ 
+    <div class="navbar-start"
+         x-data="{ 
             open: false,
             toggle() {
                 if (this.open) {
@@ -69,33 +70,29 @@ require $_SERVER['DOCUMENT_ROOT'] .
                 this.open = false
  
                 focusAfter && focusAfter.focus()
-            } }" 
-            x-on:keydown.escape.prevent.stop="close($refs.button)" 
-            x-on:focusin.window="! $refs.panel.contains($event.target) && close()" 
-            x-id="['dropdown-button']">
+            } }"
+         x-on:keydown.escape.prevent.stop="close($refs.button)"
+         x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+         x-id="['dropdown-button']">
         <div class="dropdown md:hidden">
-            <button 
-                class="btn btn-ghost btn-circle swap swap-rotate" 
-                x-ref="button" 
-                x-on:click="toggle()"
-                :aria-expanded="open" 
-                :aria-controls="$id('dropdown-button')" 
-                type="button"
-                :class="open && 'swap-active' "
-            >
-                <svg  xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 swap-on fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button class="btn btn-ghost btn-circle swap swap-rotate"
+                    x-ref="button"
+                    x-on:click="toggle()"
+                    :aria-expanded="open"
+                    :aria-controls="$id('dropdown-button')"
+                    type="button"
+                    :class="open && 'swap-active' ">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 swap-on fill-current" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7" />
                 </svg>
                 <i class="iconoir-menu text-xl swap-off fill-current"></i>
             </button>
-            <ul 
-                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52" 
+            <ul class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
                 :class="open && '!visible !scale-100 !opacity-100' "
-                x-ref="panel" 
-                x-show="open" 
-                x-transition.origin.top.left x-on:click.outside="close($refs.button)" 
-                :id="$id('dropdown-button')" 
-            >
+                x-ref="panel"
+                x-show="open"
+                x-transition.origin.top.left x-on:click.outside="close($refs.button)"
+                :id="$id('dropdown-button')">
                 <?php loop_navItem($navItem, $page, true); ?>
             </ul>
         </div>
@@ -118,7 +115,8 @@ require $_SERVER['DOCUMENT_ROOT'] .
             <label tabindex="0" class="btn btn-square btn-outline mr-2">
                 <i class="iconoir-cart text-xl"></i>
             </label>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
+            <ul tabindex="0"
+                class="dropdown-content z-[1] menu p-2 shadow bg-base-200 rounded-box w-52">
                 <li>Cart is empty</li>
             </ul>
         </div>
@@ -127,59 +125,57 @@ require $_SERVER['DOCUMENT_ROOT'] .
             <label tabindex="0" class="btn btn-ghost btn-circle">
                 <i class="iconoir-user text-3xl"></i>
             </label>
-            <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
+            <ul tabindex="0"
+                class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
                 <?php if (
-                    session_status() === PHP_SESSION_ACTIVE &&
-                    isset($_SESSION['user_id'])
-                ): ?>
-                    <?php foreach ($userItem as $value): ?>
+                    PHP_SESSION_ACTIVE === session_status()
+                    && isset($_SESSION['user_id'])
+                ) { ?>
+                    <?php foreach ($userItem as $value) { ?>
                         <li>
-                            <a href="<?php echo $value[
-                                'link'
-                            ]; ?>" class="dropdown-item">
+                            <a href="<?php echo $value['link']; ?>" class="dropdown-item">
                                 <?php echo $value['title']; ?>
                             </a>
                         </li>
-                    <?php endforeach; ?>
-                <?php else: ?>
+                    <?php } ?>
+                <?php } else { ?>
                     <li>
                         <a href="/auth?type=signup">Sign up</a>
                     </li>
                     <li>
                         <a href="/auth?type=login">Log in</a>
                     </li>
-                <?php endif; ?>
+                <?php } ?>
             </ul>
         </div>
         <div class="hidden md:block">
             <?php if (
-                session_status() === PHP_SESSION_ACTIVE &&
-                isset($_SESSION['user_id'])
-            ): ?>
+                PHP_SESSION_ACTIVE === session_status()
+                && isset($_SESSION['user_id'])
+            ) { ?>
                 <div class="dropdown dropdown-end">
                     <label tabindex="0" class="btn btn-ghost btn-circle">
                         <i class="iconoir-user text-3xl"></i>
                     </label>
-                    <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
-                        <?php foreach ($userItem as $value): ?>
+                    <ul tabindex="0"
+                        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52">
+                        <?php foreach ($userItem as $value) { ?>
                             <li>
-                                <a href="<?php echo $value[
-                                    'link'
-                                ]; ?>" class="dropdown-item">
+                                <a href="<?php echo $value['link']; ?>" class="dropdown-item">
                                     <?php echo $value['title']; ?>
                                 </a>
                             </li>
-                        <?php endforeach; ?>
+                        <?php } ?>
                     </ul>
                 </div>
-            <?php else: ?>
+            <?php } else { ?>
                 <a href="/auth?type=signup" class="btn btn-primary mr-2">
                     <strong>Sign up</strong>
                 </a>
                 <a href="/auth?type=login" class="btn btn-outline btn-primary mr-2">
                     Log in
                 </a>
-            <?php endif; ?>
+            <?php } ?>
         </div>
 
     </div>

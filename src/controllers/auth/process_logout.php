@@ -1,4 +1,5 @@
 <?php
+
 // Initialize the session.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/controllers/session.php';
 
@@ -15,4 +16,4 @@ $host = $_SERVER['HTTP_HOST'];
 $protocol = $_SERVER['REQUEST_SCHEME'];
 
 header("Location: $protocol://$host/", true);
-exit();
+exit;

@@ -1,6 +1,6 @@
 <?php
 
-$isPost = isset($_POST['auth_type']) && $_POST['auth_type'] === 'signup';
+$isPost = isset($_POST['auth_type']) && 'signup' === $_POST['auth_type'];
 if ($isPost) {
     // username
     if (isset($formErrors['username_signup'])) {
@@ -31,7 +31,7 @@ foreach ($signUpInputList as $input) {
     if ($isPost) {
         if (isset(${$input . '_errs'})) {
             $inputErrors = ${$input . '_errs'};
-        } elseif ($input === 'confirm_password' || $input === 'password') {
+        } elseif ('confirm_password' === $input || 'password' === $input) {
             $inputErrors = 'NOT_SHOWN';
         } else {
             $inputErrors = null;
@@ -54,4 +54,5 @@ foreach ($signUpInputList as $input) {
 }
 ?>
 
-<p>Already have an account? <a class="has-text-weight-bold" href="/auth?type=login">Log in</a> here!</p>
+<p>Already have an account? <a class="has-text-weight-bold" href="/auth?type=login">Log in</a> here!
+</p>

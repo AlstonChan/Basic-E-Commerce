@@ -12,11 +12,7 @@
             All Products
         </h1>
 
-        <?php for (
-            $index = 0;
-            $index < count($arrangedProductsCategory);
-            $index++
-        ) {
+        <?php for ($index = 0; $index < count($arrangedProductsCategory); ++$index) {
             $page_type = 'all';
             include $_SERVER['DOCUMENT_ROOT'] .
                 '/../src/views/products/product.php';

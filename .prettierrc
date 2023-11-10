@@ -1,8 +1,0 @@
-{
-    "parser": "php",
-    "plugins": [
-        "@prettier/plugin-php"
-    ],
-    "singleQuote": true,
-    "phpVersion": "8.2"
-}

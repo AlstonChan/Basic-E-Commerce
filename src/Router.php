@@ -22,7 +22,7 @@ class Router
 
     public static function registerRouter(): self
     {
-        if (self::$instance === null) {
+        if (null === self::$instance) {
             self::$instance = new Router();
         }
 
@@ -42,6 +42,7 @@ class Router
 
         return $this;
     }
+
     public function put(string $path, callable $callback): self
     {
         $this->routeHandler(self::METHOD_PUT, $path, $callback);
@@ -68,6 +69,7 @@ class Router
         }
         header("HTTP/1.1 $code Not Found");
         $this->pageError = $callback;
+
         return $this;
     }
 
@@ -80,8 +82,8 @@ class Router
         $callback = null;
         foreach ($this->routes as $route) {
             if (
-                $route['path'] === $requestPath &&
-                $route['method'] === $method
+                $route['path'] === $requestPath
+                && $route['method'] === $method
             ) {
                 $callback = $route['callback'];
             }

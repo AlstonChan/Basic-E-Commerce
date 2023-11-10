@@ -1,6 +1,6 @@
 <?php
 
-$isPost = isset($_POST['auth_type']) && $_POST['auth_type'] === 'login';
+$isPost = isset($_POST['auth_type']) && 'login' === $_POST['auth_type'];
 if ($isPost) {
     // email
     if (isset($formErrors['email_login'])) {
@@ -20,7 +20,7 @@ foreach ($loginInputList as $input) {
     if ($isPost) {
         if (isset(${$input . '_errs'})) {
             $inputErrors = ${$input . '_errs'};
-        } elseif ($input === 'password') {
+        } elseif ('password' === $input) {
             $inputErrors = 'NOT_SHOWN';
         } else {
             $inputErrors = null;
@@ -42,4 +42,5 @@ foreach ($loginInputList as $input) {
         '.php';
 }
 ?>
-<p>Don't have an account? <a class="has-text-weight-bold" href="/auth?type=signup">Sign Up</a> here!</p>
+<p>Don't have an account? <a class="has-text-weight-bold" href="/auth?type=signup">Sign Up</a> here!
+</p>

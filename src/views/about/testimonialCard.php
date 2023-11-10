@@ -1,14 +1,14 @@
 <?php
 $is_main = false;
 
-if (isset($index) && $index === 2) {
+if (isset($index) && 2 === $index) {
     $is_main = true;
 }
 ?>
 
 <article class="card <?php echo $is_main
-    ? 'max-w-fill'
-    : 'max-w-sm'; ?> bg-neutral text-primary-content mb-4 sm:mb-8 flex-1 card-small">
+                            ? 'max-w-fill'
+                            : 'max-w-sm'; ?> bg-neutral text-primary-content mb-4 sm:mb-8 flex-1 card-small">
     <div class="card-body">
         <blockquote class="mb-5 font-semibold">
             <p class="<?php echo $is_main ? 'text-xl' : ''; ?>">

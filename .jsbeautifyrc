@@ -1,0 +1,11 @@
+{
+    "wrap-attributes": "preserve-aligned",
+    "wrap-line-length": 100,
+    "unformatted": [
+        "svg",
+        "pre",
+        "code",
+        "textarea"
+    ],
+    "tab-size": 4
+}

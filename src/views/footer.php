@@ -32,7 +32,7 @@ $data = $rawData['social-media'];
     <nav>
         <header class="footer-title">FOLLOW US</header>
         <div class="grid grid-flow-col gap-4">
-            <?php foreach ($data as $company): ?>
+            <?php foreach ($data as $company) { ?>
                 <a class="flex flex-col link link-hover">
                     <figure class="max-w-[48px] h-auto self-center">
                         <img src="<?php echo $company['thumbnails']; ?>">
@@ -41,17 +41,19 @@ $data = $rawData['social-media'];
                         <?php echo $company['name']; ?>
                     </p>
                 </a>
-            <?php endforeach; ?>
+            <?php } ?>
         </div>
     </nav>
 </footer>
 <div class="my-10 max-w-xs mx-auto">
     <p class="text-center">
-        <strong>SHOP</strong> by 
+        <strong>SHOP</strong> by
         <a href="https://www.chanalston.com" class="link link-secondary link-hover">
             <strong>Chan Alston</strong>
-        </a>. 
+        </a>.
         The source code is licensed under
-        <a href="https://opensource.org/licenses/GPL-3.0" class="link link-info link-hover">GNU GPLv3</a>.
+        <a href="https://opensource.org/licenses/GPL-3.0" class="link link-info link-hover">GNU
+            GPLv3
+        </a>.
     </p>
 </div>

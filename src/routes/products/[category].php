@@ -17,11 +17,12 @@ $page = $currentCategory;
 
         <?php
         $page_type = 'category';
+
         include $_SERVER['DOCUMENT_ROOT'] .
             '/../src/views/products/product.php';
         ?>
 
-    </article>
+    </section>
 
     <?php require $_SERVER['DOCUMENT_ROOT'] .
         '/../src/views/home/services.php'; ?>
