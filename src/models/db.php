@@ -1,9 +1,14 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'shop';
+require_once __DIR__ . '/../../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->safeLoad();
+
+$host = 'commerce-mariadb';
+$dbname = $_ENV['MYSQL_DATABASE'];
 $username = 'root';
-$password = '';
+$password = $_ENV['MYSQL_ROOT_PASSWORD'];
 
 $mysqli = new mysqli(
     hostname: $host,

@@ -8,11 +8,19 @@ spl_autoload_register(function ($class) {
     require $path;
 });
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/controllers/auth/helper.php';
+
 use Src\Controllers\Auth\Validate\CheckPassword;
 use Src\Controllers\Auth\Validate\CheckUsername;
 
 if (isset($_POST['auth_type']) && 'signup' === $_POST['auth_type']) {
     $db = require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/models/db.php';
+
+    if (!check_if_table_exists($db, 'users')) {
+        if (!create_users_table($db)) {
+            throw new Exception('Unable to create table users');
+        }
+    }
 
     $formErrors = [];
     $formValues = [];
@@ -33,7 +41,7 @@ if (isset($_POST['auth_type']) && 'signup' === $_POST['auth_type']) {
         $stmt = mysqli_stmt_init($db);
 
         if (!mysqli_stmt_prepare($stmt, $query)) {
-            return true;
+            throw new Exception('Unable to prepare sql statement');
         } else {
             mysqli_stmt_bind_param($stmt, 's', $email);
             mysqli_stmt_execute($stmt);
@@ -98,7 +106,7 @@ if (isset($_POST['auth_type']) && 'signup' === $_POST['auth_type']) {
             );
             mysqli_stmt_execute($stmt);
             mysqli_stmt_close($stmt);
-            header("Location: http://$host/", true);
+            header("Location: http://$host/auth?type=login", true);
             exit;
         }
     } else {

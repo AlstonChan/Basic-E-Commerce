@@ -1,4 +1,4 @@
-.env.apache
+.env
 /htdocs/public/dist/*
 node_modules/*
 /vendor/

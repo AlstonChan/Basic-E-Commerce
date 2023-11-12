@@ -22,6 +22,6 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/views/input/input_base.php';
-inputBase('Password', "password", $params['type'], 'password', $inputErrors);
+inputBase('Password', "pass", $params['type'], 'password', $inputErrors);
 
 ?>

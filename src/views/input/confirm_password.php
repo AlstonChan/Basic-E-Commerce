@@ -21,6 +21,6 @@
 <?php
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/views/input/input_base.php';
-inputBase('Confirm Password', "conf_pass", $params['type'], 'password', $inputErrors);
+inputBase('Confirm Password', "re_pass", $params['type'], 'password', $inputErrors);
 
 ?>

@@ -8,10 +8,18 @@ spl_autoload_register(function ($class) {
     require $path;
 });
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/controllers/auth/helper.php';
+
 use Src\Controllers\Auth\Validate\CheckPassword;
 
 if (isset($_POST['auth_type']) && 'login' === $_POST['auth_type']) {
     $db = require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/models/db.php';
+
+    if (!check_if_table_exists($db, 'users')) {
+        if (!create_users_table($db)) {
+            throw new Exception('Unable to create table users');
+        }
+    }
 
     $formErrors = [];
     $formValues = [];
