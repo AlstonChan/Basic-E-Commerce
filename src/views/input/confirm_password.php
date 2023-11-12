@@ -1,4 +1,4 @@
-<div class="field">
+<!-- <div class="field">
     <label class="label" for="re_pass_<?php echo $params['type']; ?>">Confirm Password</label>
     <p class="control has-icons-left has-icons-right">
         <input class="input"
@@ -17,4 +17,10 @@
     </p>
     <?php require $_SERVER['DOCUMENT_ROOT'] .
         '/../src/views/input/error_footer.php'; ?>
-</div>
+</div> -->
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/views/input/input_base.php';
+inputBase('Confirm Password', "conf_pass", $params['type'], 'password', $inputErrors);
+
+?>

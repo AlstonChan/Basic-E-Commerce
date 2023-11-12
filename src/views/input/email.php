@@ -1,4 +1,4 @@
-<div class="field">
+<!-- <div class="field">
     <label class="label" for="email_<?php echo $params['type']; ?>">Email</label>
     <p class="control has-icons-left has-icons-right">
         <input class="input"
@@ -20,4 +20,10 @@
     </p>
     <?php require $_SERVER['DOCUMENT_ROOT'] .
         '/../src/views/input/error_footer.php'; ?>
-</div>
+</div> -->
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/views/input/input_base.php';
+inputBase('Email Address', "email", $params['type'], 'email', $inputErrors);
+
+?>

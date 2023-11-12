@@ -41,6 +41,3 @@ foreach ($loginInputList as $input) {
         $input .
         '.php';
 }
-?>
-<p>Don't have an account? <a class="has-text-weight-bold" href="/auth?type=signup">Sign Up</a> here!
-</p>

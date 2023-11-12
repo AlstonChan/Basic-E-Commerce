@@ -52,7 +52,3 @@ foreach ($signUpInputList as $input) {
         $input .
         '.php';
 }
-?>
-
-<p>Already have an account? <a class="has-text-weight-bold" href="/auth?type=login">Log in</a> here!
-</p>

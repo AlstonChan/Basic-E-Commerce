@@ -1,4 +1,4 @@
-<div class="field">
+<!-- <div class="field">
     <label class="label" for="pass_<?php echo $params['type']; ?>">Password</label>
     <p class="control has-icons-left has-icons-right">
         <input class="input"
@@ -18,4 +18,10 @@
     <?php require $_SERVER['DOCUMENT_ROOT'] .
         '/../src/views/input/error_footer.php'; ?>
     <p class="help"><a href="" class="has-text-weight-bold">Forget Password?</a></p>
-</div>
+</div> -->
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../src/views/input/input_base.php';
+inputBase('Password', "password", $params['type'], 'password', $inputErrors);
+
+?>

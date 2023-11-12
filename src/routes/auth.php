@@ -11,62 +11,72 @@ require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/head.php';
 ?>
 
 <body>
-    <section class="section" style="width:100vw; height:100vh; overflow-x:hidden; overflow:auto;">
-        <svg class="background--custom" id="demo" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path class="path-auth" fill="#FFFF00" fill-opacity="0.7" d="M-100 -100L200 -100L200 50L-100 50Z" style="animation: path0 5s linear infinite alternate;" />
-            <path class="path-auth" fill="#00FFFF" fill-opacity="0.7" d="M-100 -100L200 -100L200 50L-100 50Z" style="animation: path1 12.5s linear infinite alternate;" />
-            <path class="path-auth" fill="#FF00FF" fill-opacity="0.2" d="M-100 -100L200 -100L200 20L-100 20Z" style="animation: path2 30s linear infinite alternate;" />
-        </svg>
-        <div class="container">
-            <div class="container custom-box">
-                <div class="custom-box-auth columnCard-info py-3 px-5">
-                    <figure class="mx-auto my-3" style="width:fit-content">
-                        <a href="/">
-                            <img src="/public/assets/logo.svg"
-                                 width="224"
-                                 height="56"
-                                 style="vertical-align:middle">
-                        </a>
-                    </figure>
-
-                    <h1 class="title has-text-centered has-text-weight-bold">
-                        <?php echo 'login' === $params['type']
-                            ? 'Welcome back !'
-                            : 'Create a new account'; ?>
-                    </h1>
-                    <h2 class="subtitle has-text-centered">
-                        <?php echo 'login' === $params['type']
-                            ? 'User log In'
-                            : 'Sign up new account'; ?>
-                    </h2>
-
-                    <form action="" autocomplete="on" method="post">
-                        <?php if ('login' === $params['type']) {
-                            require $_SERVER['DOCUMENT_ROOT'] .
-                                '/../src/views/auth/login.php';
-                        } else {
-                            require $_SERVER['DOCUMENT_ROOT'] .
-                                '/../src/views/auth/signup.php';
-                        } ?>
-
-                        <div class="field mt-2">
-                            <p class="control">
-                                <button class="button is-success"
-                                        type="submit"
-                                        name="auth_type"
-                                        value="<?php echo $params['type']; ?>">
-                                    <?php echo 'login' === $params['type']
-                                        ? 'Log In'
-                                        : 'Sign Up'; ?>
-                                </button>
-                            </p>
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
+    <section class="flex flex-col justify-center items-center mt-9 px-6 py-12 lg:px-8">
+        <div class="flex justify-center flex-col my-10">
+            <a href="/" class="self-center">
+                <img src="/public/assets/logo.svg" width="168" height="42">
+            </a>
+            <h2
+                class="mt-3 text-center text-3xl font-bold leading-9 tracking-tight">
+                <?php echo 'login' === $params['type']
+                    ? 'Log in to your account'
+                    : 'Sign up a new account'; ?>
+            </h2>
         </div>
+        <div class="mx-auto p-10 bg-base-300 rounded-xl w-[450px] shadow-2xl">
+            <form action="" autocomplete="on" method="post">
+                <?php if ('login' === $params['type']) {
+                    require $_SERVER['DOCUMENT_ROOT'] .
+                        '/../src/views/auth/login.php';
+                } else {
+                    require $_SERVER['DOCUMENT_ROOT'] .
+                        '/../src/views/auth/signup.php';
+                } ?>
+
+                <?php if ('login' === $params['type']) : ?>
+                    <div class="flex self-center">
+                        <div class="form-control">
+                            <label class="label cursor-pointer">
+                                <input type="checkbox"
+                                       checked="checked"
+                                       class="checkbox checkbox-sm mr-2 border-2" />
+                                <span class="label-text">Remember me</span>
+                            </label>
+                        </div>
+                        <a href=""
+                           class="link link-secondary link-hover ml-auto flex self-center">
+                            <strong>Forgot password?</strong>
+                        </a>
+                    </div>
+                <?php endif ?>
+
+                <div class="mt-4">
+                    <p class="control">
+                        <button class="btn btn-accent w-full"
+                                type="submit"
+                                name="auth_type"
+                                value="<?php echo $params['type']; ?>">
+                            <?php echo 'login' === $params['type']
+                                ? 'Log In'
+                                : 'Sign Up'; ?>
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+        <p class="mt-10 text-md">
+            <?php if ('login' === $params['type']) : ?>
+                Don't have an account?
+                <a class="link link-secondary link-hover" href="/auth?type=signup">
+                    <strong>Sign Up here!</strong>
+                </a>
+            <?php else : ?>
+                Already have an account?
+                <a class="link link-secondary link-hover" href="/auth?type=login">
+                    <strong>Log in here!</strong>
+                </a>
+            <?php endif ?>
+        </p>
     </section>
 </body>
 
