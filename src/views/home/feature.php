@@ -10,49 +10,26 @@ foreach ($productsData['products'] as $key => $value) {
 $topProducts = array_slice($topProducts, 0, 7);
 ?>
 
-<section class="section has-text-centered">
-    <p class="title is-2 has-text-weight-bold">
+<section class="mb-32">
+    <h2 class="text-2xl md:text-4xl font-bold text-center mb-10">
         Our Top Products
-    </p>
-    <div class="tile is-ancestor">
-        <div class="tile mx-auto" style="max-width:1208px">
-            <div class="tile is-parent is-vertical">
+    </h2>
+    <div
+         class="grid grid-rows-2 lg:grid-rows-none grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto gap-5 px-5">
+        <?php
+        $order = 0;
+        $is_new = true;
+        require 'featureCard.php';
 
-                <?php
+        $order = 1;
+        $is_new = false;
+        require 'featureCard.php';
 
-                $order = 0;
-                require "featureCard.php";
+        $order = 4;
+        require 'featureCard.php';
 
-                ?>
-
-
-                <?php
-
-                $order = 1;
-                require "featureCard.php";
-
-                ?>
-
-            </div>
-            <div class="tile is-parent is-vertical">
-
-                <?php
-
-                $order = 4;
-                require "featureCard.php";
-
-                ?>
-
-
-                <?php
-
-                $order = 6;
-                require "featureCard.php";
-
-                ?>
-
-            </div>
-
-        </div>
+        $order = 6;
+        require 'featureCard.php';
+        ?>
     </div>
 </section>

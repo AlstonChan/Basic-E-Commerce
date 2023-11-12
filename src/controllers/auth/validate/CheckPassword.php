@@ -12,7 +12,7 @@ class CheckPassword
         protected ?int $minChars = null,
         protected bool $mixedCase = false,
         protected int $minNums = 0,
-        protected int $minSymbols = 0
+        protected int $minSymbols = 0,
     ) {
         if (!isset($this->minChars) || $this->minChars < self::MIN_LENGTH) {
             $this->minChars = self::MIN_LENGTH;
@@ -35,7 +35,8 @@ class CheckPassword
         if ($this->mixedCase) {
             $pattern = '/(?=.*\p{Ll})(?=.*\p{Lu})/u';
             if (!preg_match($pattern, $this->password)) {
-                $this->errors[] = 'Password should include uppercase and lowercase characters.';
+                $this->errors[] =
+                    'Password should include uppercase and lowercase characters.';
             }
         }
         if ($this->minNums > 0) {
@@ -46,7 +47,7 @@ class CheckPassword
             }
         }
         if ($this->minSymbols > 0) {
-            $pattern =  '/[\p{S}\p{P}]/u';
+            $pattern = '/[\p{S}\p{P}]/u';
             $found = preg_match_all($pattern, $this->password, $matches);
             if ($found < $this->minSymbols) {
                 $this->errors[] = "Password should include at least $this->minSymbols nonalphanumeric character(s).";

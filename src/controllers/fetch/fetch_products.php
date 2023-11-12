@@ -1,6 +1,6 @@
 <?php
 
-$productsFile = $_SERVER['DOCUMENT_ROOT'] . "/assets/products.json";
+$productsFile = $_SERVER['DOCUMENT_ROOT'] . '/public/assets/products.json';
 $productsData = json_decode(file_get_contents($productsFile), true);
 
 $rawProductsCategory = [];

@@ -1,28 +1,27 @@
-<?php $page = "All Products" ?>
-<?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/head.php" ?>
+<?php $page = 'All Products'; ?>
+<?php require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/head.php'; ?>
 
 <body>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/primary.php" ?>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/nav/secondary.php" ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] .
+        '/../src/views/nav/primary.php'; ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] .
+        '/../src/views/nav/secondary.php'; ?>
 
-    <article class="section has-text-centered wide-widescreen">
-        <p class="title is-2 has-text-weight-bold">
+    <section class="mt-8">
+        <h1 class="text-2xl md:text-4xl font-bold text-center mb-10">
             All Products
-        </p>
-        <p class="subtitle is-4">
-            We only sell the best products
-        </p>
+        </h1>
 
-        <?php
+        <?php for ($index = 0; $index < count($arrangedProductsCategory); ++$index) {
+            $page_type = 'all';
+            include $_SERVER['DOCUMENT_ROOT'] .
+                '/../src/views/products/product.php';
+        } ?>
 
-        for ($index = 0; $index < count($arrangedProductsCategory); $index++)
-            include $_SERVER['DOCUMENT_ROOT'] . "/../src/views/all_products/product_section.php";
-
-        ?>
-
-    </article>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/home/services.php" ?>
-    <?php require $_SERVER['DOCUMENT_ROOT'] . "/../src/views/footer.php" ?>
+    </section>
+    <?php require $_SERVER['DOCUMENT_ROOT'] .
+        '/../src/views/home/services.php'; ?>
+    <?php require $_SERVER['DOCUMENT_ROOT'] . '/../src/views/footer.php'; ?>
 </body>
 
 </html>

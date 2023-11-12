@@ -1,0 +1,79 @@
+version: "3"
+
+name: php-commerce
+
+services:
+  apache:
+    image: devilbox/apache-2.4
+    container_name: commerce-apache
+    restart: unless-stopped
+    ports:
+      - 3000:80
+      - 447:443
+    networks:
+      - net
+    volumes:
+      - ./:/var/www/default 
+      - ./config/php.ini:/etc/php-custom.d/php.ini
+      - ./config/httpd.conf:/etc/httpd-custom.d/localhost.conf
+    environment:
+      DEBUG_ENTRYPOINT: ${APACHE_DEBUG_ENTRYPOINT}
+      DEBUG_RUNTIME: ${APACHE_DEBUG_RUNTIME}
+      TIMEZONE: ${TIMEZONE}
+      MAIN_VHOST_BACKEND: ${APACHE_MAIN_VHOST_BACKEND}
+      HTTP2_ENABLE: ${APACHE_HTTP2_ENABLE}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+  php-fpm:
+    image: devilbox/php-fpm:8.2-work
+    container_name: commerce-php8.2
+    restart: unless-stopped
+    networks:
+      - net
+    volumes:
+      - ./:/var/www/default
+      - ./config/php.ini:/etc/php-custom.d/php.ini
+    environment:
+      DEBUG_ENTRYPOINT: ${PHP_DEBUG_ENTRYPOINT}
+      TIMEZONE: ${TIMEZONE}
+      XDEBUG_CONFIG: ${PHP_XDEBUG_CONFIG}
+    
+  database:
+    image: mariadb:10.6
+    container_name: commerce-mariadb
+    restart: unless-stopped
+    networks:
+      - net
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: commerce-phpmyadmin
+    restart: unless-stopped
+    networks:
+      - net
+    ports:
+      - 3001:80
+    depends_on:
+      - database
+    environment:
+      PMA_HOST: ${PMA_HOST}
+      PMA_PORT: ${PMA_PORT}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+
+volumes:
+  db:
+
+networks:
+  net:
+    driver: bridge

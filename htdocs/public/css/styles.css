@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.hero {
+  position: relative;
+
+  background-image: url(/public/assets/hero_phone_sml.jpg);
+  background-repeat: no-repeat;
+  background-color: #0a0a0a;
+}
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+  bottom: -71px;
+
+  width: 100%;
+  height: 100px;
+  background-repeat: repeat-x;
+  background-image: url(/public/assets/wave.svg);
+  background-color: hsl(var(--b1) / var(--tw-bg-opacity));
+  overflow: hidden;
+}
+
+.footer-bg {
+  box-shadow: 0 0 0 100vmax hsl(var(--b3) / var(--tw-bg-opacity));
+  clip-path: inset(0 -100vmax);
+}
+
+.logo-img {
+  max-width: 168px;
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 640px) {
+  .card-small {
+    @apply card-compact;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .logo-img {
+    max-width: 120px;
+  }
+}

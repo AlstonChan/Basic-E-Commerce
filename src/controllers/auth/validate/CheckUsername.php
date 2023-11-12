@@ -30,15 +30,15 @@ class CheckUsername
     {
         if (empty($this->username)) {
             // username cannot be empty
-            $this->errors[] = "A username is required";
-        } else if (strlen($this->username) <= $this->minChars) {
+            $this->errors[] = 'A username is required';
+        } elseif (strlen($this->username) <= $this->minChars) {
             // username must be longer than 3 character
-            $errorMsg = "Username must be longer than 3 character";
+            $errorMsg = 'Username must be longer than 3 character';
 
             $this->errors[] = $errorMsg;
-        } else if (strlen($this->username) >= $this->maxChars) {
+        } elseif (strlen($this->username) >= $this->maxChars) {
             // username must be  shorter than 30 character
-            $errorMsg = "Username must be shorter than 30 character";
+            $errorMsg = 'Username must be shorter than 30 character';
 
             $this->errors[] = $errorMsg;
         }

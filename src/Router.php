@@ -8,10 +8,10 @@ class Router
 {
     private static ?Router $instance = null;
 
-    private const METHOD_GET = "GET";
-    private const METHOD_POST = "POST";
-    private const METHOD_PUT = "PUT";
-    private const METHOD_DELETE = "DELETE";
+    private const METHOD_GET = 'GET';
+    private const METHOD_POST = 'POST';
+    private const METHOD_PUT = 'PUT';
+    private const METHOD_DELETE = 'DELETE';
 
     private array $routes;
     private $pageError;
@@ -22,7 +22,7 @@ class Router
 
     public static function registerRouter(): self
     {
-        if (self::$instance === null) {
+        if (null === self::$instance) {
             self::$instance = new Router();
         }
 
@@ -42,6 +42,7 @@ class Router
 
         return $this;
     }
+
     public function put(string $path, callable $callback): self
     {
         $this->routeHandler(self::METHOD_PUT, $path, $callback);
@@ -49,43 +50,52 @@ class Router
         return $this;
     }
 
-    public function routeHandler(string $method, string $path, callable $callback): void
-    {
+    public function routeHandler(
+        string $method,
+        string $path,
+        callable $callback,
+    ): void {
         $this->routes[$method . $path] = [
             'path' => $path,
             'method' => $method,
-            'callback' => $callback
+            'callback' => $callback,
         ];
     }
 
-    public function pageErrorHandler(int $code = 404, callable $callback): self
+    public function pageErrorHandler(int $code, callable $callback): self
     {
+        if (empty($code)) {
+            $code = 404;
+        }
         header("HTTP/1.1 $code Not Found");
         $this->pageError = $callback;
+
         return $this;
     }
 
     public function run(): self
     {
-        $requestUri = parse_url(($_SERVER["REQUEST_URI"]));
+        $requestUri = parse_url($_SERVER['REQUEST_URI']);
         $requestPath = $requestUri['path'];
         $method = $_SERVER['REQUEST_METHOD'];
 
         $callback = null;
         foreach ($this->routes as $route) {
-            if ($route['path'] === $requestPath && $route['method'] === $method) {
+            if (
+                $route['path'] === $requestPath
+                && $route['method'] === $method
+            ) {
                 $callback = $route['callback'];
-            };
+            }
         }
 
         if (!$callback) {
-            if (!empty($this->pageError))
+            if (!empty($this->pageError)) {
                 $callback = $this->pageError;
+            }
         }
 
-        call_user_func_array($callback, [
-            array_merge($_GET, $_POST)
-        ]);
+        call_user_func_array($callback, [array_merge($_GET, $_POST)]);
 
         return $this;
     }

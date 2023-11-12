@@ -1,23 +1,35 @@
-<article class="tile is-child notification p-0 homeCard has-text-centered defaultCard">
-    <figure class="image">
-        <img src="<?php echo $topProducts[$order]["thumbnail"]; ?>" style="border-radius:4px">
-    </figure>
-    <div class="content px-5 py-3">
-        <p class="title mt-2 mb-5">
-            <?php echo $topProducts[$order]["title"]; ?>
-        </p>
-        <p class="subtitle ">
-            <?php echo $topProducts[$order]["description"]; ?>
-        </p>
-        <span class="tag is-info is-capitalized">
-            <?php echo $topProducts[$order]["category"]; ?>
-        </span>
-        <div class="buttons is-justify-content-center mt-3">
-            <button class="button has-text-weight-bold is-primary">
-                <a href="/products?id=<?php echo $topProducts[$order]["id"]; ?>" style="text-decoration:none">
-                    BUY NOW
-                </a>
-            </button>
+<div
+     class="join join-vertical w-fit odd:justify-self-end shadow-xl hover:scale-105 ease-in-out duration-150">
+    <a
+       class="card card-small max-w-96 bg-base-300 rounded-b-none h-full"
+       href="/products?id=<?php echo $topProducts[$order]['id']; ?>">
+        <figure>
+            <img
+                 src="<?php echo $topProducts[$order]['thumbnail']; ?>"
+                 alt="<?php echo $topProducts[$order]['title']; ?>"
+                 class="aspect-video object-cover">
+        </figure>
+        <div class="card-body">
+            <h3 class="card-title">
+                <?php
+                echo $topProducts[$order]['title'];
+
+                if (isset($is_new) && $is_new) {
+                    echo '<div class="badge badge-secondary">NEW</div>';
+                }
+                ?>
+            </h3>
+            <p>
+                <?php echo $topProducts[$order]['description']; ?>
+            </p>
+            <div class="card-actions">
+                <div class="badge badge-outline">
+                    <?php echo $topProducts[$order]['category']; ?>
+                </div>
+            </div>
         </div>
-    </div>
-</article>
+    </a>
+    <a class="btn btn-primary w-full rounded-t-none">
+        Add to Cart
+    </a>
+</div>

@@ -1,0 +1,52 @@
+{
+    "delivery": [
+        {
+            "name": "Buffalo-Express-Delivery",
+            "thumbnails": "/public/assets/delivery-services/Buffalo-Express-Delivery.jpg"
+        },
+        {
+            "name": "Courier-Specialists",
+            "thumbnails": "/public/assets/delivery-services/Courier-Specialists.jpg"
+        },
+        {
+            "name": "DHL",
+            "thumbnails": "/public/assets/delivery-services/DHL.jpg"
+        },
+        {
+            "name": "FedEx",
+            "thumbnails": "/public/assets/delivery-services/FedEx.jpg"
+        },
+        {
+            "name": "Flash-Courier-and-Transportation",
+            "thumbnails": "/public/assets/delivery-services/Flash-Courier-and-Transportation.jpg"
+        },
+        {
+            "name": "Goldstar-Couriers-and-Logisitics",
+            "thumbnails": "/public/assets/delivery-services/Goldstar-Couriers-and-Logisitics.jpg"
+        },
+        {
+            "name": "Hot-Shot",
+            "thumbnails": "/public/assets/delivery-services/Hot-Shot.jpg"
+        },
+        {
+            "name": "Premier-Delivery-Services",
+            "thumbnails": "/public/assets/delivery-services/Premier-Delivery-Services.jpg"
+        },
+        {
+            "name": "Royale-International",
+            "thumbnails": "/public/assets/delivery-services/Royale-International.jpg"
+        },
+        {
+            "name": "Smart-Delivery-Service",
+            "thumbnails": "/public/assets/delivery-services/Smart-Delivery-Service.jpg"
+        },
+        {
+            "name": "United-Express-Systems",
+            "thumbnails": "/public/assets/delivery-services/United-Express-Systems.jpg"
+        },
+        {
+            "name": "Xcel-Delivery-Service",
+            "thumbnails": "/public/assets/delivery-services/Xcel-Delivery-Service.jpg"
+        }
+    ]
+}

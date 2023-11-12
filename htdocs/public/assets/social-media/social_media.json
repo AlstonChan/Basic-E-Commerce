@@ -1,0 +1,20 @@
+{
+    "social-media": [
+        {
+            "name": "facebook",
+            "thumbnails": "/public/assets/social-media/facebook.png"
+        },
+        {
+            "name": "instagram",
+            "thumbnails": "/public/assets/social-media/instagram.png"
+        },
+        {
+            "name": "linkedin",
+            "thumbnails": "/public/assets/social-media/linkedin.png"
+        },
+        {
+            "name": "twitter",
+            "thumbnails": "/public/assets/social-media/twitter.png"
+        }
+    ]
+}
